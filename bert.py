@@ -21,6 +21,9 @@ from __future__ import print_function
 import collections
 import copy
 import json
+import os
+# Suppress TensorFlow debugging
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import math
 import re
 import six
@@ -154,6 +157,8 @@ class BertModel(object):
           ValueError: The config is invalid or one of the input tensor shapes
             is invalid.
         """
+        self.is_training = is_training
+
         config = copy.deepcopy(config)
         if not is_training:
             config.hidden_dropout_prob = 0.0

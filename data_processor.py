@@ -1,9 +1,8 @@
+import tensorflow as tf
 import collections
 import csv
 import pickle
-
 import tokenization
-import tensorflow as tf
 
 
 class InputExample(object):
@@ -268,8 +267,8 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         feature = convert_single_example(ex_index, example, label_list, max_seq_length, tokenizer)
 
         def create_int_feature(values):
-            f = tf.train.Feature(int64_list=tf.train.Int64List(value=list(values)))
-            return f
+            int_feature = tf.train.Feature(int64_list=tf.train.Int64List(value=list(values)))
+            return int_feature
 
         features = collections.OrderedDict()
         features["input_ids"] = create_int_feature(feature.input_ids)
@@ -278,6 +277,7 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         features["label_ids"] = create_int_feature([feature.label_id])
 
         tf_example = tf.train.Example(features=tf.train.Features(feature=features))
+
         writer.write(tf_example.SerializeToString())
 
 
@@ -296,9 +296,3 @@ def _truncate_seq_pair(tokens_a, tokens_b, max_length):
             tokens_a.pop()
         else:
             tokens_b.pop()
-
-
-processors = {
-    "swda": SwdaProcessor,
-    "mrda": MrdaProcessor,
-}  # TODO add the others included with BERT
