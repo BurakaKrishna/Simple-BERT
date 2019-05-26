@@ -13,14 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Functions and classes related to optimization (weight updates)."""
-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import os
+
 import re
 import tensorflow as tf
-
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 def create_optimizer(loss, init_lr, num_train_steps, num_warmup_steps, use_tpu):
     """Creates an optimizer training op."""

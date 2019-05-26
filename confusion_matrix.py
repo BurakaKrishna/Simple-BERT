@@ -2,7 +2,7 @@ from textwrap import wrap
 import re
 import itertools
 import tfplot
-import matplotlib
+import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.metrics import confusion_matrix
 
@@ -26,7 +26,7 @@ def plot_confusion_matrix(correct_labels, predict_labels, labels, title='Confusi
         - Depending on the number of category and the data , you may have to modify the figzie, font sizes etc.
         - Currently, some of the ticks dont line up due to rotations.
     '''
-    cm = confusion_matrix(correct_labels, predict_labels, labels=labels)
+    cm = confusion_matrix(correct_labels, predict_labels)
     if normalize:
         cm = cm.astype('float') * 10 / cm.sum(axis=1)[:, np.newaxis]
         cm = np.nan_to_num(cm, copy=True)
@@ -35,7 +35,7 @@ def plot_confusion_matrix(correct_labels, predict_labels, labels, title='Confusi
     np.set_printoptions(precision=2)
     ###fig, ax = matplotlib.figure.Figure()
 
-    fig = matplotlib.figure.Figure(figsize=(7, 7), dpi=320, facecolor='w', edgecolor='k')
+    fig = plt.figure(figsize=(7, 7), dpi=320, facecolor='w', edgecolor='k')
     ax = fig.add_subplot(1, 1, 1)
     im = ax.imshow(cm, cmap='Oranges')
 
@@ -60,5 +60,6 @@ def plot_confusion_matrix(correct_labels, predict_labels, labels, title='Confusi
         ax.text(j, i, format(cm[i, j], 'd') if cm[i, j] != 0 else '.', horizontalalignment="center", fontsize=6,
                 verticalalignment='center', color="black")
     fig.set_tight_layout(True)
+    fig.show()
     summary = tfplot.figure.to_summary(fig, tag=tensor_name)
     return summary

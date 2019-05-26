@@ -1,9 +1,11 @@
-import tensorflow as tf
+import os
+
 import collections
 import csv
 import pickle
 import tokenization
-
+import tensorflow as tf
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 class InputExample(object):
     """A single training/test example for simple sequence classification."""
@@ -296,3 +298,25 @@ def _truncate_seq_pair(tokens_a, tokens_b, max_length):
             tokens_a.pop()
         else:
             tokens_b.pop()
+
+
+def build_dataset(input_file, seq_length, batch_size, is_training=True, drop_remainder=True):
+
+    name_to_features = {
+        "input_ids": tf.FixedLenFeature([seq_length], tf.int64),
+        "input_mask": tf.FixedLenFeature([seq_length], tf.int64),
+        "segment_ids": tf.FixedLenFeature([seq_length], tf.int64),
+        "label_ids": tf.FixedLenFeature([], tf.int64),
+    }
+
+    # For training, we want a lot of parallel reading and shuffling.
+    # For eval, we want no shuffling and parallel reading doesn't matter.
+    dataset = tf.data.TFRecordDataset(input_file)
+    if is_training:
+        dataset = dataset.repeat(1) # TODO NO REPEAT AND USE STEPS INSTEAD?
+        dataset = dataset.shuffle(buffer_size=100)
+
+    dataset = dataset.map(lambda record: tf.parse_single_example(record, name_to_features))
+    dataset = dataset.batch(batch_size,drop_remainder=drop_remainder) # TODO DONT DROP REMAINDER?
+
+    return dataset

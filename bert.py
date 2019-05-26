@@ -17,18 +17,18 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
+import os
+
 
 import collections
 import copy
 import json
-import os
-# Suppress TensorFlow debugging
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import math
 import re
 import six
 import tensorflow as tf
-
+# Suppress TensorFlow debugging
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 class BertConfig(object):
     """Configuration for `BertModel`."""
@@ -344,7 +344,7 @@ def get_assignment_map_from_checkpoint(tvars, init_checkpoint):
         initialized_variable_names[name] = 1
         initialized_variable_names[name + ":0"] = 1
 
-    return (assignment_map, initialized_variable_names)
+    return assignment_map, initialized_variable_names
 
 
 def dropout(input_tensor, dropout_prob):
