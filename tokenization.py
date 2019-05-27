@@ -24,7 +24,10 @@ import collections
 import unicodedata
 import six
 import tensorflow as tf
+# Suppress TensorFlow debugging
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+tf.logging.set_verbosity(tf.logging.ERROR)
+
 
 def convert_to_unicode(text):
     """Converts `text` to Unicode (if it's not already), assuming utf-8 input."""

@@ -300,7 +300,8 @@ def _truncate_seq_pair(tokens_a, tokens_b, max_length):
             tokens_b.pop()
 
 
-def build_dataset(input_file, seq_length, batch_size, is_training=True, drop_remainder=True):
+def build_dataset(input_file, seq_length, batch_size, is_training=True, drop_remainder=False):
+    """Creates an iterable dataset for BERT from the specified TF Record File"""
 
     name_to_features = {
         "input_ids": tf.FixedLenFeature([seq_length], tf.int64),
@@ -313,10 +314,9 @@ def build_dataset(input_file, seq_length, batch_size, is_training=True, drop_rem
     # For eval, we want no shuffling and parallel reading doesn't matter.
     dataset = tf.data.TFRecordDataset(input_file)
     if is_training:
-        dataset = dataset.repeat(1) # TODO NO REPEAT AND USE STEPS INSTEAD?
+        dataset = dataset.repeat()
         dataset = dataset.shuffle(buffer_size=100)
 
     dataset = dataset.map(lambda record: tf.parse_single_example(record, name_to_features))
-    dataset = dataset.batch(batch_size,drop_remainder=drop_remainder) # TODO DONT DROP REMAINDER?
-
+    dataset = dataset.batch(batch_size, drop_remainder=drop_remainder)
     return dataset

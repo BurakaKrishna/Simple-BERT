@@ -9,9 +9,7 @@ from sklearn.metrics import confusion_matrix
 
 def plot_confusion_matrix(correct_labels, predict_labels, labels, title='Confusion matrix',
                           tensor_name='MyFigure/image', normalize=False):
-
-
-    '''
+    """
     Parameters:
         correct_labels                  : These are your true classification categories.
         predict_labels                  : These are you predicted classification categories
@@ -25,7 +23,7 @@ def plot_confusion_matrix(correct_labels, predict_labels, labels, title='Confusi
     Other itema to note:
         - Depending on the number of category and the data , you may have to modify the figzie, font sizes etc.
         - Currently, some of the ticks dont line up due to rotations.
-    '''
+    """
     cm = confusion_matrix(correct_labels, predict_labels)
     if normalize:
         cm = cm.astype('float') * 10 / cm.sum(axis=1)[:, np.newaxis]
@@ -33,7 +31,6 @@ def plot_confusion_matrix(correct_labels, predict_labels, labels, title='Confusi
         cm = cm.astype('int')
 
     np.set_printoptions(precision=2)
-    ###fig, ax = matplotlib.figure.Figure()
 
     fig = plt.figure(figsize=(7, 7), dpi=320, facecolor='w', edgecolor='k')
     ax = fig.add_subplot(1, 1, 1)
@@ -57,9 +54,10 @@ def plot_confusion_matrix(correct_labels, predict_labels, labels, title='Confusi
     ax.yaxis.tick_left()
 
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        ax.text(j, i, format(cm[i, j], 'd') if cm[i, j] != 0 else '.', horizontalalignment="center", fontsize=6,
+        ax.text(j, i, format(cm[i, j], 'd') if cm[i, j] != 0 else '.',
+                horizontalalignment="center", fontsize=6,
                 verticalalignment='center', color="black")
     fig.set_tight_layout(True)
-    fig.show()
+
     summary = tfplot.figure.to_summary(fig, tag=tensor_name)
-    return summary
+    return summary, fig

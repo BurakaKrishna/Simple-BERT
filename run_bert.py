@@ -8,7 +8,9 @@ import tokenization
 import tensorflow as tf
 import confusion_matrix as cf
 import numpy as np
+# Suppress TensorFlow debugging
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+tf.logging.set_verbosity(tf.logging.ERROR)
 # Disable GPU's
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
@@ -23,7 +25,7 @@ processors = {
 # Data source and output paths
 data_dir = task_name + '_data/'
 output_dir = task_name + '_output/'
-tensorboard_path = output_dir + 'tb'
+tensorboard_path = output_dir + 'tb_log'
 
 # Training parameters
 max_seq_length = 128  # TODO Needs args?
@@ -81,16 +83,20 @@ data_processor.convert_examples_to_features(evaluation_examples, labels, max_seq
 
 train_dataset = data_processor.build_dataset(train_data_file, max_seq_length, batch_size, is_training=True)
 eval_dataset = data_processor.build_dataset(eval_data_file, max_seq_length, batch_size, is_training=False)
-# iterator = dataset.make_initializable_iterator()
-iterator = tf.data.Iterator.from_structure(train_dataset.output_types,
-                                           train_dataset.output_shapes)
-next = iterator.get_next()
 
-input_ids = tf.convert_to_tensor(next["input_ids"], name='input_ids')
-input_mask = tf.convert_to_tensor(next["input_mask"], name='input_mask')
-segment_ids = tf.convert_to_tensor(next["segment_ids"], name='segment_ids')
-label_ids = tf.convert_to_tensor(next["label_ids"], name='label_ids')
+handle_pl = tf.placeholder(tf.string, shape=[])
+iterator = tf.data.Iterator.from_string_handle(handle_pl, train_dataset.output_types, train_dataset.output_shapes)
+# iterator = tf.data.Iterator.from_structure(train_dataset.output_types,
+#                                            train_dataset.output_shapes)
+iterator_next = iterator.get_next()
 
+input_ids = tf.convert_to_tensor(iterator_next["input_ids"], name='input_ids')
+input_mask = tf.convert_to_tensor(iterator_next["input_mask"], name='input_mask')
+segment_ids = tf.convert_to_tensor(iterator_next["segment_ids"], name='segment_ids')
+label_ids = tf.convert_to_tensor(iterator_next["label_ids"], name='label_ids')
+
+train_iterator = train_dataset.make_initializable_iterator()
+eval_iterator = eval_dataset.make_initializable_iterator()
 # train_iterator = iterator.make_initializer(train_dataset)
 # eval_iterator = iterator.make_initializer(eval_dataset)
 
@@ -135,7 +141,8 @@ with tf.variable_scope("loss"):
 
     per_example_loss = -tf.reduce_sum(one_hot_labels * log_probs, axis=-1)
     loss = tf.reduce_mean(per_example_loss)
-    loss_summary = tf.summary.scalar('Loss', loss)
+    loss_pl = tf.placeholder(tf.float32)
+    loss_summary = tf.summary.scalar('Loss', loss_pl)
 
 # Optimisation function
 with tf.name_scope('optimizer'):
@@ -145,10 +152,8 @@ with tf.name_scope('optimizer'):
 with tf.name_scope('accuracy'):
     correct_prediction = tf.equal(predictions, tf.cast(label_ids, tf.int32))
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-    accuracy_summary = tf.summary.scalar('Accuracy', accuracy)
-
-# with tf.name_scope('tb_images'):
-#     cm_summary = cf.plot_confusion_matrix(label_ids, predictions, labels, tensor_name='dev/cm')
+    accuracy_pl = tf.placeholder(tf.float32)
+    accuracy_summary = tf.summary.scalar('Accuracy', accuracy_pl)
 
 # tvars = tf.trainable_variables()
 # initialized_variable_names = {}
@@ -178,61 +183,87 @@ with tf.Session() as sess:
     start_time = time.time()
     print("Training started: " + datetime.datetime.now().strftime("%b %d %T") + " for", num_epochs, "epochs")
 
+    num_global_steps = num_training_steps * num_epochs
+    global_step = 0
+    # Run for number of training epochs
     for epoch in range(1, num_epochs + 1):
 
-        # Initialise the iterator with the training data
-        sess.run(iterator.make_initializer(train_dataset))
-        model.is_training = True
+        # Initialise the iterator handles
+        # sess.run(iterator.make_initializer(train_dataset))
+        train_handle = sess.run(train_iterator.string_handle())
+        eval_handle = sess.run(eval_iterator.string_handle())
 
-        train_loss = 0
-        train_accuracy = 0
-        train_summary = None
-        while True:
-            try:
-                _, train_loss, train_logits, train_accuracy, train_summary = sess.run([optimizer, loss, logits, accuracy, summary])
-            except tf.errors.OutOfRangeError:
-                break
+        # For accumulating the epoch loss and accuracy stats
+        train_loss = []
+        train_accuracy = []
+        eval_loss = []
+        eval_accuracy = []
 
-        # Record training summaries
-        train_writer.add_summary(train_summary, epoch)
+        # Initialise the training dataset
+        sess.run(train_iterator.initializer)
+        for train_step in range(1, num_training_steps + 1):
+            # Need to switch model to not training
+            model.is_training = True
+            global_step += 1
 
-        print("Starting Evaluation for epoch: " + str(epoch))
-        # Initialise the iterator with the training data
-        sess.run(iterator.make_initializer(eval_dataset))
-        model.is_training = False
+            _, train_batch_loss, train_batch_logits, train_batch_accuracy = \
+                sess.run([optimizer, loss, logits, accuracy], feed_dict={handle_pl: train_handle})
+            train_loss.append(train_batch_loss)
+            train_accuracy.append(train_batch_accuracy)
 
-        eval_loss = 0 #TODO NEED TO ACCUMULATE LOSS AND ACC PER BATCH
-        eval_accuracy = 0
-        eval_summary = None
-        lbl_id = None
-        pred = None
-        while True:
-            try:
-                _, eval_loss, eval_logits, eval_accuracy, bpred, blbl_id, eval_summary = sess.run([optimizer, loss, logits, accuracy, predictions, label_ids, summary])
-                if lbl_id is None:
-                    lbl_id = blbl_id
-                    pred = bpred
-                else:
-                    lbl_id = np.concatenate((lbl_id, blbl_id), axis=None)
-                    pred = np.concatenate((pred, bpred), axis=None)
-            except tf.errors.OutOfRangeError:
-                break
+            # Evaluate every X training steps
+            if train_step % 5 == 0:
 
-        # Record test and image summaries
-        eval_writer.add_summary(eval_summary, epoch)
-        # img_d_summary_dir = os.path.join(tensorboard_path, "img")
-        # img_d_summary_writer = tf.summary.FileWriter(img_d_summary_dir, sess.graph)
+                # For accumulating this evaluations loss and accuracy stats
+                eval_step_loss = []
+                eval_step_accuracy = []
+                # For accumulating this evaluations predictions for confusion matrix
+                eval_step_predictions = []
+                eval_step_labels = []
 
-        #https://stackoverflow.com/questions/38543850/tensorflow-how-to-display-custom-images-in-tensorboard-e-g-matplotlib-plots
-        cm_summary = cf.plot_confusion_matrix(lbl_id, pred, labels, tensor_name='dev/cm')
-        eval_writer.add_summary(cm_summary, epoch)
+                # Initialise the evaluation dataset
+                sess.run(eval_iterator.initializer)
+                for eval_step in range(num_evaluation_steps):
+                    # Need to switch model to not training
+                    model.is_training = False
 
+                    _, eval_batch_loss, eval_batch_logits, eval_batch_accuracy, eval_batch_predictions, eval_batch_labels = \
+                        sess.run([optimizer, loss, logits, accuracy, predictions, label_ids], feed_dict={handle_pl: eval_handle})
+                    eval_loss.append(eval_batch_loss)
+                    eval_accuracy.append(eval_batch_accuracy)
+                    eval_step_loss.append(eval_batch_loss)
+                    eval_step_accuracy.append(eval_batch_accuracy)
+                    eval_step_predictions = np.concatenate((eval_step_predictions, eval_batch_predictions), axis=None)
+                    eval_step_labels = np.concatenate((eval_step_labels, eval_batch_labels), axis=None)
+
+                # Record training summaries
+                train_summary = sess.run(summary, feed_dict={accuracy_pl: sum(train_accuracy) / len(train_accuracy),
+                                                             loss_pl: sum(train_loss)/len(train_loss)})
+                eval_summary = sess.run(summary, feed_dict={accuracy_pl: sum(eval_step_accuracy) / len(eval_step_accuracy),
+                                                            loss_pl: sum(eval_step_loss) / len(eval_step_loss)})
+                train_writer.add_summary(train_summary, global_step)
+                eval_writer.add_summary(eval_summary, global_step)
+
+                # Record confusion matrix
+                cm_summary, cm_fig = cf.plot_confusion_matrix(eval_step_labels, eval_step_predictions, labels, tensor_name='eval_confusion_matrix')
+                eval_writer.add_summary(cm_summary, global_step)
+
+                # Display epoch statistics
+                print("Step: {}/{} - "
+                      "Training loss: {:.3f}, acc: {:.2f}% - "
+                      "Evaluation loss: {:.3f}, acc: {:.2f}%".format(global_step, num_global_steps,
+                                                                     (sum(train_loss) / len(train_loss)),
+                                                                     ((sum(train_accuracy) * 100) / len(train_accuracy)),
+                                                                     (sum(eval_step_loss) / len(eval_step_loss)),
+                                                                     ((sum(eval_step_accuracy) * 100) / len(eval_step_accuracy))))
         # Display epoch statistics
         print("Epoch: {}/{} - "
-              "Training loss: {:.3f}, acc: {:.2f} - "
-              "Evaluation loss: {:.3f}, acc: {:.2f}%".format(epoch, num_epochs, train_loss,
-                                                             train_accuracy * 100,
-                                                             eval_loss, eval_accuracy * 100))
+              "Training loss: {:.3f}, acc: {:.2f}% - "
+              "Evaluation loss: {:.3f}, acc: {:.2f}%".format(epoch, num_epochs,
+                                                             (sum(train_loss) / len(train_loss)),
+                                                             ((sum(train_accuracy) * 100) / len(train_accuracy)),
+                                                             (sum(eval_loss) / len(eval_loss)),
+                                                             ((sum(eval_accuracy) * 100) / len(eval_accuracy))))
 
         # saver.save(sess, 'mrda_output/test.ckpt')
     end_time = time.time()

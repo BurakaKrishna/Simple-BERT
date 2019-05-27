@@ -21,7 +21,10 @@ import os
 
 import re
 import tensorflow as tf
+# Suppress TensorFlow debugging
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+tf.logging.set_verbosity(tf.logging.ERROR)
+
 
 def create_optimizer(loss, init_lr, num_train_steps, num_warmup_steps, use_tpu):
     """Creates an optimizer training op."""

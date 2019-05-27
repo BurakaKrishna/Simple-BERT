@@ -1,0 +1,53 @@
+        # model.is_training = True
+        #
+        # train_loss = 0
+        # train_accuracy = 0
+        # train_summary = None
+        # lbl_id = None
+        # pred = None
+        # while True:
+        #     try:
+        #         _, train_loss, train_logits, train_accuracy, train_summary = sess.run([optimizer, loss, logits, accuracy, predictions, label_ids, summary])
+        #         if lbl_id is None:
+        #             lbl_id = eval_batch_labels
+        #             pred = eval_batch_predictions
+        #         else:
+        #             lbl_id = np.concatenate((lbl_id, eval_batch_labels), axis=None)
+        #             pred = np.concatenate((pred, eval_batch_predictions), axis=None)
+        #     except tf.errors.OutOfRangeError:
+        #         break
+        #
+        # # Record training summaries
+        # train_writer.add_summary(train_summary, epoch)
+        #
+        # print("Starting Evaluation for epoch: " + str(epoch))
+        # # Initialise the iterator with the training data
+        # sess.run(iterator.make_initializer(eval_dataset))
+        # model.is_training = False
+        #
+        # eval_loss = 0 #TODO NEED TO ACCUMULATE LOSS AND ACC PER BATCH
+        # eval_accuracy = 0
+        # eval_summary = None
+        # lbl_id = None
+        # pred = None
+        # while True:
+        #     try:
+        #         _, eval_loss, eval_batch_logits, eval_accuracy, eval_batch_predictions, eval_batch_labels, eval_summary = sess.run([optimizer, loss, logits, accuracy, predictions, label_ids, summary])
+        #         if lbl_id is None:
+        #             lbl_id = eval_batch_labels
+        #             pred = eval_batch_predictions
+        #         else:
+        #             lbl_id = np.concatenate((lbl_id, eval_batch_labels), axis=None)
+        #             pred = np.concatenate((pred, eval_batch_predictions), axis=None)
+        #     except tf.errors.OutOfRangeError:
+        #         break
+        #
+        # # Record test and image summaries
+        # eval_writer.add_summary(eval_summary, epoch)
+        # # img_d_summary_dir = os.path.join(tensorboard_path, "img")
+        # # img_d_summary_writer = tf.summary.FileWriter(img_d_summary_dir, sess.graph)
+        # print(len(lbl_id))
+        #
+        # #https://stackoverflow.com/questions/38543850/tensorflow-how-to-display-custom-images-in-tensorboard-e-g-matplotlib-plots
+        # cm_summary = cf.plot_confusion_matrix(lbl_id, pred, labels, tensor_name='dev/cm')
+        # eval_writer.add_summary(cm_summary, epoch)
