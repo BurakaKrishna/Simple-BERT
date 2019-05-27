@@ -1,16 +1,12 @@
-import collections
-import csv
 import os
 # Disable GPU's
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 # Suppress TensorFlow debugging
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-import pickle
 
 import bert
-import bert_utilities as utils
+from trash import bert_utilities as utils
 import data_processor
-import optimization
 import tokenization
 import tensorflow as tf
 
