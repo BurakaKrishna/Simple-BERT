@@ -1,11 +1,10 @@
 import os
-
 import collections
 import csv
 import pickle
 import tokenization
 import tensorflow as tf
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 
 class InputExample(object):
     """A single training/test example for simple sequence classification."""

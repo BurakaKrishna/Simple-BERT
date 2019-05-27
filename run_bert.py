@@ -15,13 +15,13 @@ tf.logging.set_verbosity(tf.logging.ERROR)
 # Disable GPU's
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 # Set number of CPU Cores to use
-config = tf.ConfigProto(device_count={"CPU": 5},
-                        inter_op_parallelism_threads=5,
-                        intra_op_parallelism_threads=5)
+config = tf.ConfigProto(device_count={"CPU": 24},
+                        inter_op_parallelism_threads=24,
+                        intra_op_parallelism_threads=24)
 tf.Session(config=config)
 
 # Task name
-task_name = 'mrda'  # TODO Needs arg?
+task_name = 'swda'  # TODO Needs arg?
 processors = {
     "swda": data_processor.SwdaProcessor(),
     "mrda": data_processor.MrdaProcessor(),
@@ -37,7 +37,7 @@ model_dir = output_dir + 'model/'
 max_seq_length = 128  # TODO Needs args?
 batch_size = 32
 learning_rate = 2e-5
-num_epochs = 2  # Default 3
+num_epochs = 3  # Default 3
 num_evaluations = 3  # Number of evaluations to make per epoch
 training = True
 testing = True
