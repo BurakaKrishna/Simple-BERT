@@ -4,6 +4,9 @@ import csv
 import pickle
 import tokenization
 import tensorflow as tf
+# Suppress TensorFlow debugging
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+tf.logging.set_verbosity(tf.logging.ERROR)
 
 
 class InputExample(object):

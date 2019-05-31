@@ -1,0 +1,17 @@
+Step: 12624/18036 - Training loss: 0.733, acc: 77.25% - Evaluation loss: 0.721, acc: 77.88%
+Step: 13224/18036 - Training loss: 0.682, acc: 78.66% - Evaluation loss: 0.721, acc: 77.27%
+Step: 13824/18036 - Training loss: 0.698, acc: 78.04% - Evaluation loss: 0.722, acc: 77.30%
+Step: 14424/18036 - Training loss: 0.729, acc: 77.23% - Evaluation loss: 0.721, acc: 77.48%
+Step: 15024/18036 - Training loss: 0.746, acc: 76.68% - Evaluation loss: 0.722, acc: 77.48%
+Step: 15624/18036 - Training loss: 0.750, acc: 76.52% - Evaluation loss: 0.721, acc: 77.39%
+Step: 16224/18036 - Training loss: 0.748, acc: 76.51% - Evaluation loss: 0.718, acc: 77.24%
+Step: 16824/18036 - Training loss: 0.748, acc: 76.58% - Evaluation loss: 0.720, acc: 77.30%
+Step: 17424/18036 - Training loss: 0.758, acc: 76.33% - Evaluation loss: 0.723, acc: 77.42%
+Step: 18024/18036 - Training loss: 0.749, acc: 76.62% - Evaluation loss: 0.719, acc: 77.39%
+Epoch: 3/3 - Training loss: 0.749, acc: 76.62% - Evaluation loss: 0.721, acc: 77.41%
+Training took 111151.609 seconds for 3 epochs
+------------------------------------
+Testing model...
+Training started: May 29 20:53:17
+Testing loss: 0.828, acc: 73.52%
+Testing took 261.847

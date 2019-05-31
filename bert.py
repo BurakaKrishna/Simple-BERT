@@ -51,16 +51,16 @@ class BertConfig(object):
 
         Args:
           vocab_size: Vocabulary size of `inputs_ids` in `BertModel`.
-          hidden_size: Size of the encoder layers and the pooler layer.
-          num_hidden_layers: Number of hidden layers in the Transformer encoder.
+          hidden_size: Size of the label_encoder layers and the pooler layer.
+          num_hidden_layers: Number of hidden layers in the Transformer label_encoder.
           num_attention_heads: Number of attention heads for each attention layer in
-            the Transformer encoder.
+            the Transformer label_encoder.
           intermediate_size: The size of the "intermediate" (i.e., feed-forward)
-            layer in the Transformer encoder.
+            layer in the Transformer label_encoder.
           hidden_act: The non-linear activation function (function or string) in the
-            encoder and pooler.
+            label_encoder and pooler.
           hidden_dropout_prob: The dropout probability for all fully connected
-            layers in the embeddings, encoder, and pooler.
+            layers in the embeddings, label_encoder, and pooler.
           attention_probs_dropout_prob: The dropout ratio for the attention
             probabilities.
           max_position_embeddings: The maximum sequence length that this model might
@@ -201,7 +201,7 @@ class BertModel(object):
                     max_position_embeddings=config.max_position_embeddings,
                     dropout_prob=config.hidden_dropout_prob)
 
-            with tf.variable_scope("encoder"):
+            with tf.variable_scope("label_encoder"):
                 # This converts a 2D mask of shape [batch_size, seq_length] to a 3D
                 # mask of shape [batch_size, seq_length, seq_length] which is used
                 # for the attention scores.
@@ -243,11 +243,11 @@ class BertModel(object):
         return self.pooled_output
 
     def get_sequence_output(self):
-        """Gets final hidden layer of encoder.
+        """Gets final hidden layer of label_encoder.
 
         Returns:
           float Tensor of shape [batch_size, seq_length, hidden_size] corresponding
-          to the final hidden of the transformer encoder.
+          to the final hidden of the transformer label_encoder.
         """
         return self.sequence_output
 
@@ -773,7 +773,7 @@ def transformer_model(input_tensor,
                       do_return_all_layers=False):
     """Multi-headed, multi-layer Transformer from "Attention is All You Need".
 
-    This is almost an exact implementation of the original Transformer encoder.
+    This is almost an exact implementation of the original Transformer label_encoder.
 
     See the original paper:
     https://arxiv.org/abs/1706.03762
