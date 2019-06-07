@@ -1,0 +1,1000 @@
+A|Okay, uh,|fo_o_fw_"_by_bc
+A|could you tell me what you think contributes most to, uh, air pollution?|qw
+B|Well, it's hard to say.|^h
+B|I mean, while it's certainly the case that things like automobiles and factories, uh, pollute a lot, uh, if you look at how much pollution is say kicked up by an active volcano, uh, it's certainly less than clear that anything man can do in this sort of scale of things has much effect at all.|sv
+B|What do you think?|qo
+A|Um, well, you talked about, uh, volcanos.|sd
+A|I'm not sure how many active volcanos there are now, and, and what the amount of material that they do, uh, put into the atmosphere.|sd
+A|I think probably the greatest cause is, uh, vehicles, especially around cities.|sv
+B|Uh-huh.|b
+A|Um, uh, do you live right in the city itself?|qy
+B|No,|nn
+B|I'm more out in the suburbs,|sd
+B|but I certainly work near a city.|sd
+A|Okay,|bk
+A|so Can you notice,|qy
+B|How about you?|qo
+A|well it's, it's,|%
+A|I live in a rural area.|sd
+B|Uh-huh.|b
+A|It's mainly farms and, uh, no heavy industry.|sd
+A|Attleboro, itself,|sd
+A|I live in Rhode Island.|sd
+B|Oh, I see.|b
+A|And, it's in the north,|sd
+A|I live up in the, uh, northeast corner|sd
+A|and Attleboro sits in just over the line, where T I's plant is,|sd
+B|Uh-huh.|b
+A|but there isn't a lot of heavy industry.|sd
+A|There's the freeways|sd
+A|and we get an occasional,|sd
+A|it depends which way the wind's blowing from Boston, cause we're like forty miles south of Boston,|sd
+A|so we'll pick up that.|sd
+A|And, uh, I've noticed over the past say, maybe five or six years, uh,|sd
+A|we live about twenty miles away from the state airport|sd
+A|and I notice that the fly patterns now of the jets are getting bigger,|sd
+A|they're swinging wider so that now they are coming over, over our homes.|sd
+B|Uh-huh.|b
+A|And, it seems like, uh, we're catching all that residue.|sv
+A|I'm not sure if it's kerosene or what that's dropping.|sd
+A|But, other than that, you know, we don't have the, unless we're catching it from the midwest, the emissions. You know from the power plants. Um.|sd
+B|Yeah.|b
+B|You mean like from the coal.|bf
+A|Yeah,|ny
+A|yeah,|ny
+A|we generate,|sd
+A|one of our, our biggest electrical plants in Rhode Island uses coal to, uh, generate electricity.|sd
+B|Um,|%
+A|Um, there doesn't seem to be much emission from them,|sv
+A|but I'm not sure about the rest of the country.|sd
+B|Yeah,|b
+B|I notice locally a major problem is Kodak.|sv
+B|Um, it's interesting|sv
+B|because in order to, uh, keep with the E P A standards which, which tend to be visible, uh, what's coming out of your smokestack, they do all their emissions at night.|sd
+B|Uh, so people get up,|sd
+A|Okay,|b
+A|well, is that right?|bh
+B|Yeah,|ny
+B|people get up in the morning in that neighborhood|sd
+B|and they've got this black ash on their cars, which, you know, seems to be,|sd
+A|Yeah,|b
+A|surprise, surprise.|ba
+B|Yeah,|b
+B|I mean, I really think that if the E P A had anything on the ball they'd go in there with a few phosphorous grenades, light up the sky, photograph the emissions at that point, and, uh, you know,|sv
+A|Yeah.|b
+A|There, there must be, uh, uh, some of the, some of the, uh, larger plants up, uh, up around one hundred twenty-eight.|sv
+B|Uh-huh.|b
+A|Um, we've got reports that, uh,|sd
+A|during the night seems like they'd blow off their, their stacks from, uh, the warehouses, for powerhouses,|sd
+B|Right.|b
+B|Uh-huh.|b
+A|and, they do that at night too, because, employees been complaining that the cars have been pitted, and, you know, spots all over them.|sd
+B|Right.|b
+B|Yeah,|b
+B|yeah.|b
+A|So, you're right,|sd
+A|they could do something about, about that, I guess.|sv
+B|Yeah.|aa
+B|That seems a little ridiculous.|sv
+A|How are your, uh, your lakes,|qo
+A|and, uh,|%
+B|Oh they've been getting cleaner.|sd
+A|They have?|qy^d
+B|Sure.|na
+B|But, um, yeah,|%
+B|I'm not sure how much the water pollution is, is directly related to the air pollution, other than acid rain,|sd
+B|yeah,|%
+A|Acid rain,|b^m
+A|yeah,|b
+A|that's, that's what I was, uh,|sd
+B|I mean the stuff I've read recently in Technology Review basically indicates that acid rain may be a little bit, uh, overstated. That a lot of the die off they've seen in forests may not really be due to acid rain at all.|sd
+B|Um,|%
+B|I'm not an expert.|h
+A|Yeah,|aa
+A|no.|aa
+A|Didn't they just have an article, oh, on, uh,|qy
+A|they were dumping lime.|sd
+B|Up here?|b
+A|Up, upstate New York somewhere, over huge areas,|sd
+B|I haven't read that.|sd
+B|Oh yeah.|b
+A|and they thought that was more beneficial because, you know it, it, some of it does soak in|sd
+A|and some of it runs off right away into the, in to the streams and rivers|sd
+A|and some of the fish were supposedly making a comeback.|sd
+B|Uh-huh.|b
+A|I can't remember where|sd
+A|I, I read that recently somewhere,|sd
+A|and I can't remember where.|sd
+B|Yeah,|b
+B|that's|ba
+A|But I, I thought it was up there.|sv
+A|So, that's interesting because New Hampshire, and parts of Vermont, um, they showed pictures of, of extensive tree damage that they attributed to acid rain.|sv
+B|Uh-huh.|b
+B|Um.|%
+A|Um, you kind of think it's something else then?|qy
+B|Well, that's what the environmentalists were claiming in this article.|arp_nd
+B|So that,|%
+A|Oh, they didn't say, they didn't say what though,|bf
+A|they just said they thought it was,|fo_o_fw_"_by_bc
+B|They didn't say what,|na
+B|they just said they thought acid rain's contribution may be less than was previously suspected. Um, that it may be other natural things at work. Um,|sd
+A|Uh, natural disease,|bf
+B|Yeah,|aa
+B|so it's, it's less than clear.|sv
+B|Like I said, I don't remember the article that well.|sd
+A|Yeah,|b
+A|yeah.|b
+B|But, um, I don't know,|h
+B|I mean, what do you think we can, uh, I guess as individuals or as a group, do about, uh, air pollution?|qw
+A|Uh, we can demand, uh, more efficient automobiles for one thing.|sv
+A|I still think that's, that's, uh, one of our major causes of pollutants.|sv
+B|Uh-huh.|b
+A|Uh, how we go about that, it's uh, uh, it's a little bit difficult.|sv
+B|I think it's up to individuals too, to ask automakers for, for less pollutant vehicles.|sv
+A|Yeah,|b
+A|Yeah,|b
+A|you I think you need a, a vehicle something like, uh, Ralph Nader, Nader's Raiders, or, where, uh, or, uh, uh, A A R P, which has a lot of members. Uh, if you can get those types of groups.|sv
+B|Yeah.|b
+B|Uh-huh.|b
+B|Do you really think that new vehicles though is a big problem.|qy
+B|I mean, I remember reading an article that said like, it's, uh, the older polluters,|sd
+B|the, the twelve and fifteen year old cars, you know, contribute like ninety percent, of the automobile pollution|sd
+A|Yeah,|b
+B|and the new cars it's hardly is, hardly anything.|sv
+A|Yeah,|aa
+A|they're better,|sv
+A|but how about all the trucks and buses that are out there.|qh
+A|Uh, when was the last time you saw a truck that didn't belch, smoke, or, uh,|qw
+B|Yeah,|b
+B|but doesn't that just mean they're out of tune.|qy
+A|Uh, I'm not really sure.|no
+A|You think that, that, that the, uh, the trucking industry is that, uh, incompetent, that they wouldn't, you know,|qy^d
+A|fuel is, is one of their biggest costs.|sd
+B|Right.|b
+A|So, you would,|%
+B|But diesel engines.|%
+A|Yeah,|b
+A|diesel engines.|sd
+B|It, you know, it's, it,|%
+B|I mean, they do generate a lot of soot|sv
+B|but that at least, that kind of particulate comes out of the air pretty quickly.|sv
+A|Yeah.|b
+A|Yeah.|b
+A|We could also, uh, push for legislation for, uh, rapid transit systems.|sd
+A|This country seems to be a little behind on that.|sv
+B|Yeah.|b
+B|On the other hand most people don't use rapid transit because it's so inconvenient.|sv
+A|Um, yeah,|b
+A|but only because we got used to, uh, single person, single car, driving.|sv
+B|Uh-huh.|b
+A|A lot of people don't even like to carpool.|sv
+B|Uh-huh.|b
+A|But we could that.|sd
+A|That'll help, pollution, air pollution,|sv
+B|Uh-huh.|b
+A|The, uh, United States and Canada are I guess, is, is, going into, uh, some types of agreements to limit, uh, what's being given out by power plants,|sd
+B|Uh-huh.|b
+A|I guess Canada's quite concerned that we're sending a lot of our stuff up there,|sd
+B|Yeah,|b
+B|sure.|b
+A|So that's helping.|sv
+B|Well, what do you think about like a device, a meter right on a tail pipe|qw
+B|and you pay the tax based on how much you polluted?|fo_o_fw_"_by_bc
+A|Now that's an idea.|ba
+A|don't say that too loud though because, uh, every city and town will have a meter on your tail pipe generating  generating revenue,|ad
+B|Well, it just means if you don't pollute, right, or you pollute very little  you don't have to pay any tax|sd
+B|or you just buy one of these things|sd
+B|and it, it, uh,|%
+B|maybe you, you could probably devise them so it slowly closed off your tail pipe|sv
+B|and, uh, the less you pollute the longer the devise lasts|sd
+B|and if you pollute a lot then it closed off your tail pipe|sd
+B|and you couldn't start your car anymore.|sd
+A|That's a, that's an interesting concept.|ba
+A|Is that your idea?|qy
+B|Yeah,|ny
+B|but, uh, you know, it's, uh,|%
+B|I guess the difficulty would be to, that somebody could obviously just take it right off the tail pipe again|sv
+B|so you probably would have to build it right into  the muffler or something.|sv
+A|Well I was going to say,|sd
+A|right.|aa
+A|You could put it in, you could, you could, it could be installed like a catalytic converter.|sd
+B|Right.|b
+A|I mean I guess you could take those off too|sv
+A|but,|%
+B|You could take|%
+B|but mufflers would be a little more obvious if you took that off.|sv
+A|Yeah,|aa
+A|if you can take a muffler off and only replace,|sd
+A|well not unless it was built into every muffler.|sd
+B|Right.|b
+A|And that's .|%
+B|But if you was talking about something which was more or less universal that, uh, busses and any kind of vehicle, had to pay a pollution tax, uh, this would penalize the heavy polluters and not penalize the light polluters,|sd
+A|That's a, that's quite a concept.|ba
+A|You should, uh, pursue that I think, or patent it, you know.|sv
+B|Yeah,|aa
+B|patent it,|sd
+B|that's a good idea.|sv
+A|If you could come up with a device that's the thing.|sv
+B|Right.|b
+A|But it shouldn't be too hard to do something like that.|sv
+A|But that's a, that's a thought.|sd
+A|No,|%
+B|Uh-huh.|b
+A|you're right|sv
+A|and that will solve, uh, a lot of problems.|sv
+A|I don't know if you, uh, if you approached the automobile industry if they would be too keen on installing something like that.|sv
+B|Uh-huh.|b
+A|Uh, but you know a proposal to, uh, uh, I guess the proper authorities,|sv
+B|Uh-huh.|b
+A|well you might, uh, generate some|sv
+B|Yeah,|b
+B|the automobile regulatory agencies or something.|bf
+A|yeah,|ny
+A|you might generate some interest in it.|sv
+A|But that's, that's a good idea.|sv
+A|Other than that I'm not sure what, what individuals can do other than like I said get involved through a group or an organization.|sv
+B|Uh-huh.|b
+B|What are your music interests?|qw
+A|Uh, just about any kind of music except acid rock|sd
+A|I, I don't care, for acid rock,|sd
+B|Me, too.|aa
+B|Oh.|b
+A|but, uh, I grew up with country and western,|sd
+B|Yeah,|b
+B|I did, too,|sd
+A|but, uh,|%
+B|and then,|%
+A|just about any kind of music.|sd
+A|I even like classical music.|sd
+B|Yeah,|b
+B|uh, I'm pretty diversified, too.|sd
+B|I, I don't, I don't like acid rock either.|sd
+B|I, I grew up in a small town|sd
+B|so, uh, the only, we only had one radio station|sd
+B|so it was country music,|sd
+A|Yeah.|b
+B|but then, uh, when I,|%
+A|Yeah,|b
+A|I grew up with Hank Snow, and Lefty Frizzell and Hank Williams and all of those old country and western songs.|sd
+B|Oh, really.|b
+B|You're older than I am|sd
+A|But, uh, I,|%
+A|did you happen to see last night the special on Channel Two with James Galway?|qy
+B|We don't get Channel Two.|ng
+B|My, uh, our cable doesn't,|sd
+A|Oh.|b
+B|I wish we got that what,|sd
+B|but,|%
+A|That is fabulous.|sv
+B|Was it?|qy
+B|Well, we don't get Channel Two.|sd
+A|We,|%
+A|Yeah,|ny
+A|when he played DANNY BOY it just almost brought, tears to your eyes, because he can make that flute sing.|sd
+B|Oh, really?|bh
+A|Yeah,|ny
+A|and, uh, it was tremendous.|sv
+B|Now, he, he is a, uh,|%
+B|actually, I did,|sd
+B|I played flute for, almost ten years|sd
+A|Yeah.|b
+B|and, and, uh, so, I, I, I appreciate his too, his, his|sd
+A|Yeah.|b
+B|he, he, he's from Ireland isn't he?|qy
+A|Yeah,|ny
+A|uh-huh,|ny
+A|and it was, uh, mostly all Irish tunes,|sd
+B|Was|%
+B|yeah.|b
+A|they had a band with him that, uh, had a harpist and another flute and then a guy that played the bagpipes plus the, uh, tin whistle, and a couple of violins and, uh, drum,|sd
+B|Yeah.|b
+B|Uh-huh.|b
+A|and they, they played all the Irish jigs and so forth,|sd
+A|it was just fabulous.|sv
+B|Yeah,|b
+B|I, he, he is really good.|sv
+B|Yeah,|%
+B|I, I, I come from a musical background,|sd
+A|Yeah.|b
+B|so, uh, uh, I've played flute, flute and piano,|sd
+B|so, I, I, I have a big appreciation for music, up to a point.|sd
+A|Yeah.|b
+A|Yeah.|b
+B|I, I'm getting now to the age where I don't like the new stuff that's coming and much of the new stuff that's coming out,|sd
+A|Yeah.|b
+A|Yeah.|b
+B|my husband says I'm getting old|sd
+A|Yeah|b
+A|I love, uh, I, I especially like instrumentals.|sd
+B|Do you?|bh
+A|Yeah.|ny
+A|I love to just lay back on the couch and, and turn a good, good instrumental got on and just close my eyes and listen.|sd
+B|Yeah,|b
+B|that's, that's nice to do, that is.|sv
+B|I've got a, I've got a, I've got a two year old who's now getting,|sd
+B|I'm getting well versed in, in kiddy music|sd
+A|Yeah.|b
+A|I'm, I've never played an instrument in my life,|sd
+A|I've always wanted too,|sd
+B|Yeah.|b
+A|I've always wished my parents had forced me to learn the piano or something,|sd
+B|Yeah|b
+A|but, uh,|%
+B|I was one of the forced ones|sd
+A|but I, I'd just love to be able to go to a party or something and sit down at the piano and bang out music|sd
+B|Oh, I could never do that|sd
+A|and,|%
+B|I was never that brave|sd
+B|but, uh, yeah.|%
+A|I guess the closest I've ever come to participating in music is singing in the choir.|sd
+B|Yeah,|b
+B|oh, yeah,|b
+B|I've, I've done, I've done that at church too.|sd
+A|Yeah.|b
+B|I haven't done that in a long time.|sd
+A|Yeah.|b
+B|So, let's see|^h
+B|what .|^h
+B|Well, what kind of music do you not like?|qw
+A|Well, like I say the acid rock,|sd
+A|I just do not|sd
+A|an I don't care for rap music either.|sd
+B|Oh,|%
+B|that's not music|sv
+A|Uh-huh,|aa
+A|no.|aa
+B|that is not,|sv
+B|I don't know what that is,|sd
+B|but that's not music|sv
+A|If I can't understand the words I don't want to listen to it.|sd
+B|Well, it's, it's, it's not, it's not music,|sv
+B|it's just, it's just, uh, uh, talking in a beat,|sv
+B|it is just, it's not exciting at all|sv
+A|Yeah.|b
+B|it doesn't, it doesn't give you relaxation,|sv
+A|Yeah.|b
+B|you can't dance to it,|sv
+B|you can't do anything to it|sv
+A|Right.|b
+A|But, I, and I love, I like orchestra music too. Like the, Boston Pops or, or anything.|sd
+B|Yeah.|b
+B|Yeah.|b
+B|Have you ever been to the, to, to the Dallas Symphony?|qy
+A|Uh-huh.|ny
+B|Have you?|bh
+B|Is|%
+B|are, are they good?|qy
+A|Yeah.|ny
+A|Yeah,|ny
+A|they're good.|sv
+B|Are they?|bh
+B|I, I have, I have, never been.|sd
+A|And, uh, we went and saw, uh, LES MISERABLES|sd
+B|Oh, really?|bh
+A|oh, the music in that was fantastic.|sv
+B|I, I've heard, I've heard that that is a really,|sd
+A|Yeah.|b
+B|I heard that was hard to get tickets to.|qy^d
+A|Yeah,|ny
+A|it, it, uh,|%
+A|I can't remember how far in advance we reserved, tickets|sd
+A|but it was out, you know, out at the State Fair Music Hall|sd
+A|and, uh it was well worth the price.|sv
+B|Yeah.|b
+B|Yeah,|b
+B|that was a real,|%
+B|Was it?|bh
+A|Yeah,|ny
+B|I, I bet it was,|ba
+A|Yeah.|b
+B|I, I really bet it was|ba
+B|Is that the only, uh, musical,|qy
+B|do you go see a lot of musicals?|qy
+A|Just, just ever so often you know, a real, a real good one like that one|sd
+B|Yeah.|b
+A|and,|%
+B|That, that would be, that would be nice|sv
+A|I went and saw, uh, I think it was, uh, SUGAR BABIES,|sd
+A|that was good,|sv
+A|that had good music in it.|sv
+B|Was it?|bh
+B|How, how,|%
+B|I can't, I don't know what that's about.|sd
+A|Uh, that was the one with Mickey Rooney|sd
+A|and, uh, oh, what's that real, oh, not real old, my wife she is old too, dancer, uh,|qw
+A|I can't think of her name.|sd
+A|I got it right on the tip of my tongue and can't say it, Helen something.|sd
+B|Uh, uh, uh, I think I know who you're oh, I know who you're talking about,|sd
+A|real long legs, and dark hair.|sd
+B|she's got black hair,|sd
+B|Yeah,|b
+B|okay,|b
+B|I know who your talking about.|sd
+B|I can't think ever her name either.|sd
+A|I can't think of it.|sd
+B|Yeah,|b
+B|that that was, that was,|%
+B|I remember that being, uh, here a few years ago.|sd
+A|Yeah,|b
+A|but, uh,|%
+B|Oh, oh, the last country music,|sd
+B|my, my parents still, uh, really like country, music|sd
+A|Yeah.|b
+B|and they, they like, uh, they like the Oak Ridge Boys and the Statler Brothers,|sd
+A|Oh, yeah,|b
+A|yeah.|b
+B|and, and, uh, well, my, my, my, my parents,|sd
+A|The Blackwoods.|^2
+B|yeah,|aa
+B|my husband likes, uh, country music real well|sd
+B|and he, he likes some of the new groups like Shenandoah,|sd
+A|Yeah.|b
+B|and, yeah,|b^m
+B|he really likes Shenandoah.|sd
+A|Alabama.|^2
+B|Yeah,|aa
+B|yeah,|aa
+B|well, yeah,|aa
+B|Alabama,|sd
+A|Uh,|%
+B|I think, I think they're a bit over exposed|sv
+A|Yeah|b
+B|I get kind, of get tired of every other song being Alabama on the, radio.|sv
+A|Yeah,|b
+A|either Alabama or Hank Williams, Junior.|^2
+B|Oh, I, I've never cared for Hank, Williams, Junior.|sd
+A|I never have either,|aa
+A|and I never have figured out how he won, uh, entertainer of the year for about, three or four years in a row.|sd
+B|Oh|b
+B|Oh, we, we watch those award shows too,|sd
+B|we enjoy watching the country and the Grammies and stuff|sd
+B|but I just, I just don't care for him,|sd
+A|Yeah.|b
+B|I just never have.|sd
+B|I don't,|%
+A|I guess probably my favorite all time country and western song or singer is, uh, probably Eddy Arnold.|sd
+B|Is, is it?|bh
+A|Uh-huh.|ny
+B|Okay,|bk
+B|I, I think, I, I know who that is,|sv
+B|uh-huh.|bk
+B|I think my parents have have, uh, some of his records.|sv
+A|But, uh, I got a, I've got about a hundred and, or had a, uh, some, uh, I sold some of them, I had about a hundred and fifty old seventy-eight R P M records of country and western, songs,|sd
+B|Yeah.|b
+B|Wow.|ba
+A|Smiley Burnette, I don't know if you were old enough to remember him him.|qy^d
+B|I've heard the name.|sd
+A|He was, uh, played in the old western movies.|sd
+A|He was the sidekick of Gene Autry I believe|sv
+B|Huh.|%
+A|or they,|%
+A|I think his name in, in the movie was Froggy|sv
+A|and,|%
+B|I've, I've never seen a Gene Autry movie,|sd
+A|had a real raspy voice,|sd
+B|Huh.|%
+A|and, uh,|%
+B|No,|fo_o_fw_"_by_bc
+B|I never have|sd
+A|some of those old ones, of course, Bob Wills, Miss Texas Playboys Ernest Tubbs and Red Foley an,|sd
+B|Yeah.|b
+B|Yeah,|b
+B|those go back quite a way|sd
+A|Yeah.|b
+A|I took them up here to Collectors Records and was able to get a little money for them|sd
+B|Yeah.|b
+A|but, uh, my mother and dad use to, uh, own a restaurant,|sd
+B|It's hard to,|%
+B|Oh, yeah.|b
+A|and he had, uh, they had a, uh, nickelodeon, of course, in the restaurant,|sd
+B|Yeah.|b
+A|and when they would come and change the records the guys would, the guy would give her the old records|sd
+B|Well, that|%
+B|that's neat.|ba
+A|so, that's where I got my,|sd
+B|that would be great if they weren't too worn out, at the time.|sv
+A|Yeah.|b
+A|Of course, there's not a whole lot of market for seventy-eight R P M records.|sv
+B|Is there not?|qy
+B|You, you'd, well you'd think there would be.|sv
+A|Well, the problem is most of the record players now will not play them because, you have to have that needle, that, uh, particular kind of needle|sv
+B|Well, that's true.|aa
+B|Oh, yeah.|b
+A|and, uh, they, just won't play on a modern day, uh phonograph.|sd
+B|Well, that's a shame|ba
+B|because I, I, we go to antique stores a lot|sd
+B|and you see seventy-eights, a, a lot at, at the stores, at record stores,|sd
+A|Yeah.|b
+B|you'd, think there'd be a market for,|sv
+A|Yeah.|b
+B|I'm, I'm sure you could find old players for them|sv
+B|but that would cost a fortune, if you could find them that worked|sv
+A|Yeah.|b
+A|Yeah.|b
+B|Oh.|b
+A|Of course, they, you know, just don't have the quality of records nowadays either because, you, you get that scratchy sound.|sv
+B|No.|aa
+B|Uh-huh.|b
+B|Well, those things were big and thick weren't they?|qy
+A|Yeah,|ny
+A|yeah.|ny
+B|You could kill somebody with them|sv
+A|Yeah,|b
+A|warped real easy.|sd
+B|And the ones you buy,|sv
+B|go out and buy one now|ad
+B|and they're just so thin and, flimsy|sv
+A|Yeah.|b
+B|and they just, they're not meant to last, at all,|sv
+A|Yeah.|b
+B|neither are tapes.|sv
+B|I, I we buy cassette tapes,|sd
+A|Yeah.|b
+B|and machines will eat them,|sd
+A|Yeah.|b
+B|and so, the best bet, any, these days are compact disk,|sv
+B|those things are practically indestructible|sv
+A|But, I, I guess, you know, the old country and western music you,|sd
+A|back then when I was a kid, there wasn't that much T V,|sd
+B|Oh, no.|b
+A|so that's all you had to listen to was the, radio,|sd
+B|Radio.|^2
+A|and, uh,|%
+B|that's just what, just what you had,|sd
+B|plus,|%
+A|Yeah.|b
+B|I think it was better back then to,|sv
+B|there's too much T V now|sv
+A|Yeah.|b
+B|and the radio is, you know, more exciting, really, than, than television,|sv
+A|Yeah.|b
+B|your imagination|%
+A|Yeah.|b
+B|kept|%
+B|and|%
+B|it just didn't vegetate your mind like television does|sv
+A|Yeah,|b
+A|I remember mother and dad always turned on the Grand Ole Opera.|sd
+B|Oh, yeah.|b
+A|Yeah.|b^m
+B|Was it on the radio every week?|qy
+A|Yeah.|ny
+B|what day, what day was that on,|qw
+B|do you, can you recall.|qy
+A|Uh, uh, seems like it was on a Friday,|sv
+B|Uh.|%
+A|Friday or,|%
+B|Okay.|fo_o_fw_"_by_bc
+A|Okay.|b^m
+B|Well what do you think about the idea of, uh, kids having to do public service work for a year?|qw
+B|Do you think it's a|qy
+A|Well, I, I think it's a pretty good idea.|sv
+A|I think they should either do that, or, or afford some time to the military, or, or helping elderly people.|sv
+B|Yes,|aa
+B|yes,|aa
+A|I, I, you know, I think that we have a bunch of elderly folks in the country that could use some help|sv
+A|and I think that before we expend all our young talent overseas and, and helping other countries we ought to perhaps give a little bit of our help to our own folks at home|sv
+A|and I'm not sure that that's not a bad idea|sv
+B|That's true.|aa
+A|and, or the military for a year or two, wouldn't be bad for,|sv
+B|Yeah.|b
+A|I think it teaches kids how to grow.|sv
+A|How about yourself?|qo
+B|Uh, I agree with you.|aa
+B|Uh, uh, what I'm thinking about is back well, when I was a kid, and much earlier than that, kids were kind of,|sd
+B|you know, the parents kind of pushed them to join, like the Boy Scouts or Girl Scouts|sv
+B|and they did, do, do do a lot of public service activities,|sv
+B|but these days they're not, uh,|sv
+B|parents aren't encouraging their kids to do things like that.|sv
+B|Because when I was in the Girl Scouts, we did a lot of public service things, because that's just part of, of the scouting, and, you know.|sd
+A|Yeah,|b
+A|I've, I've,|%
+A|that's really great.|sv
+A|I, I really think that both the Boy Scouts and Girl Scouts is a excellent, two excellent organizations.|sv
+B|They are|aa
+B|but parents,|%
+A|You know, kids seem like when they get ten or twelve years old they fall out of that,|sv
+B|Yeah,|aa
+B|they do.|aa
+A|and they don't follow it at all, you know.|sv
+A|There are very few Scouts go on, and become Eagle Scouts.|sv
+B|Oh, no.|aa
+A|And, and I don't know what the high rank is for the gals|sd
+A|but,|%
+B|I, I, uh,|%
+B|senior.|sd
+A|Oh.|b
+A|Senior,|b^m
+A|okay.|bk
+A|So, there's not, uh,|%
+B|Oh, they're just not,|%
+B|once they get into junior high it just, not done anymore|sv
+A|Yeah,|b
+A|they, they lose interest.|sv
+A|and then when they young, young adults, there's even less interest there.|sv
+B|Uh-huh.|b
+A|They're more for, I|sv
+B|Me|^2
+A|Not, not,|%
+A|yeah.|aa
+B|Grab,|sd
+B|grab,|sd
+B|grab,|sd
+B|walk out|sd
+A|Yeah,|aa
+A|you're absolutely right|sv
+B|Yeah|b
+A|I think it's a really a good thing.|sv
+A|I, I like to see,|sd
+A|of course, there's, you know, third world countries that can use all kind of help|sv
+B|Yeah,|b
+B|but there's a lot that can be done right here in this country, too.|sv
+A|But I think, we ought to start right here at home.|sv
+A|I'm, you know,|%
+B|Yeah,|b
+B|uh, I'm not, I'm not so sure that overseas help, helping overseas would be such a hot idea for, for, uh, a lot of young people.|sv
+A|No,|aa
+A|it, it,|%
+B|But, since there is much that needs to be done here.|sv
+A|I think that, yeah, I think that we need to really address what we've done here|sv
+A|and, and then perhaps even a six month tour overseas that gives them much broader outlook.|sv
+B|Uh-huh.|b
+A|Well, it's been really good.|sv
+A|We talked about this for a few minutes,|sd
+A|and, uh, hopefully, we'll have other good topic maybe another call someday,|sd
+A|but I, I don't really have too much more to say on this topic, I guess.|sd
+B|No,|b
+B|I, I agree with you|sd
+A|It, we, I guess we both agree that it's a good thing, that they should do sometime.|sv
+B|Yeah.|b
+B|Okay.|aa
+A|Well you take care,|fc
+A|and, and, enjoy the day.|fc
+B|You, too.|fc
+B|You, too.|fc
+A|Thank you, ma'am.|ft
+A|Bye-bye.|fc
+B|Bye-bye.|fc
+A|Do are you on a regular exercise program right now?|qy
+B|Yes,|ny
+B|and I hate it|sd
+B|How about you?|qo
+A|Oh, well, I'm kind of off and on.|sd
+B|Off and on|b^m
+B|well, I guess I've been kind of off and on|sd
+B|I've, uh, Had some health problems that have led me to, uh,|sd
+A|Right now I'm kind of off.|sd
+B|I'd say more on than off|sd
+A|Okay,|b
+A|what type of exercise do you do?|qw
+B|Uh, I do walking on the treadmill,|sd
+B|and then I do low impact aerobics.|sd
+A|Okay.|bk
+A|I guess you don't enjoy that very much.|qy^d
+B|Not, not really.|ng
+A|Do you find that, uh, to be boring?|qy
+B|Yeah,|ny
+B|and time consuming,|sd
+B|I mean it's not just the exercise that's boring and time consuming,|sv
+B|it's, uh, you know, afterwards, you know,|sv
+B|then you have to take a shower and get cleaned up, you know.|sv
+A|Yeah.|b
+A|Well, I'm trying to get back in shape for softball this spring.|sd
+B|Oh, yeah.|b
+A|But I,|%
+B|Do you go through this, is this something that you go through every year|qy
+A|Yeah,|ny
+A|I haven't decided whether, whether I want to play yet or not|sd
+A|I just bought myself a solo flex machine,|sd
+A|I don't know if you've seen those advertised on T V.|qy^d
+B|Uh-huh.|ny
+A|It's one of those, uh, universal type machines, exercise machines.|sd
+A|But I haven't really sat down and used it match yet,|sd
+A|so it's collecting dust right now.|sd
+B|Yeah,|b
+B|a lot of things do that.|sv
+B|I had an, I had an exercise bike|sd
+A|I used to jog somewhat.|sd
+B|I use to have one,|sd
+B|and I finally got rid of sit cause I never used it,|sd
+B|but I do use my treadmill|sd
+A|Uh-huh,|b
+A|well, that's good.|ba
+A|Yeah,|%
+A|my parents have a treadmill|sd
+A|it's,|%
+A|when I go visit them, uh, I get on that thing every now and then.|sd
+B|Yeah,|b
+B|it's nice because when the weather's bad you can't, you don't have any excuse.|sv
+A|Uh-huh,|b
+A|I just got the bicycle out today,|sd
+A|and it was real nice outside,|sd
+A|had to get out to do something.|sd
+B|Yeah,|b
+B|I can't ride a bike|sd
+B|so.|%
+A|I've been sitting in here in the house all weekend with a cold|sd
+A|so thought I, better, better get outside and do something and not waist the day.|sd
+B|Oh.|b
+B|Yeah,|b
+B|it's too nice,|sv
+B|it's been too nice all weekend.|sv
+A|But, uh, yeah,|b
+A|I need to start jog something again.|sv
+A|I've always of that to be, uh, really one of the best forms of exercise,|sv
+A|but it's terribly boring,|sv
+A|and so I really don't ever keep a program up consistently.|sd
+B|Have you ever had any injuries from jogging?|qy
+A|No,|nn
+A|I never have.|sd
+A|Well, I don't job enough I think to develop any injuries|sv
+A|I usually only go about a mile or two.|sd
+B|I guess it worries me about jogging it's that I hear that it's very hard on your body and, and that, you know, you can end up getting hurt, worse.|sd
+A|Yeah,|b
+A|it's, it's tough on the joints if you jog on concrete, or on asphalt.|sv
+B|Uh-huh.|b
+A|Suppose to be much better if you find grass, uh, or, or dirt to jog on.|sv
+B|Yeah,|b
+B|that's not quite so so easy.|sv
+A|You have to have the right, type of shoes too,|sv
+A|that's, very important.|sv
+B|Yeah.|b
+B|Yeah.|b
+B|I found that, true especially from walking on toe and fronts .|sd
+A|But,|%
+A|Yeah,|b
+A|I don't have to buy jogging shoes all to often|sd
+A|my don't get very much use|sd
+B|Well, I guess my breakdown about, they say about every six months.|sv
+A|Uh-huh.|b
+A|I usually enjoy the exercise I do|sd
+A|but, uh, like I said I'm just not very consistent about maintaining a, a program.|sd
+A|So I'll, I'll bicycle|sd
+A|I get into that for, for a little while and maybe go out, uh, on a consistent basis every couple of days and ride a bike for awhile,|sd
+A|but then I'll get tired of doing that, and maybe start jogging again and go out about three or four nights a week.|sd
+A|But, uh, that gets old too in a very short order,|sd
+B|Yeah.|b
+A|I'm, I'm hoping that this, uh, solo flex will, uh, uh, change things a little bit,|sd
+A|I really need to get on a regular type of program and use that thing on a consistent basis.|sd
+B|Yeah,|b
+B|well, don't let it collect dust.|ad
+B|At least exercise while dusting it off|ad
+A|Yeah.|b
+B|well.|b
+A|Maybe if I can get interested in playing softball again this string I can, uh, start some type of, uh, regular program.|sd
+B|Yeah,|b
+B|that, that'll be good.|ba
+A|I've always found that, uh, when you write things down and set goals it's a lot easier to keep, uh, keep something going.|sd
+B|Uh-huh.|b
+A|Uh, when I was in high school we had a choice of, uh, taking, uh, physical education courses on exercise,|sd
+A|an, uh, one of those involved a six weeks session on a universal machine, lifting weights and, uh, working out like that.|sd
+B|Oh.|b
+A|And that was very helpful|sd
+A|we kept charts of our progress, and, uh, consistently increased the empty of resistance so you could see how much you improved over the weeks.|sd
+B|Uh-huh.|b
+A|I found that to be, uh, very helpful.|sd
+B|Are you going to do that?|qy
+A|Uh, I need to,|no
+A|I haven't started yet|sd
+A|but, uh, it's a thought.|sv
+B|Well, that sounds like something good to do then.|sv
+A|Sounds like something I should do.|sv
+B|Yeah,|b
+B|nice way to start off this spring. Get back in shape.|sv
+A|How often do you, uh, uh, go out each week on your walking?|qw
+B|Well, I do,|sd
+B|I switch every other day|sd
+B|one day I walk|sd
+B|and one day I do the aerobics.|sd
+A|Okay,|bk
+A|how far, about how far do you go walking?|qw
+B|Well, I'm trying to get my tolerance now|^h
+B|I just had surgery, um, less then two months ago,|sd
+B|and right now I'm just a little over about a mile and a half,|sd
+A|Okay.|bk
+B|but I'm trying to workup to three miles.|sd
+A|Well, that's good.|ba
+A|Well they say that walking is just as good if not better then jogging.|sv
+B|Yeah,|b
+A|It,|%
+B|it takes, it's just that it takes longer to get to the same effect.|sv
+A|Sure.|b
+B|Yeah,|b
+B|but.|%
+A|Well, if you keep up with a consistent pace just to, uh, keep the heart rating going, uh,|sv
+B|My walkman broke,|sd
+A|Yeah.|b
+B|so I'm upset|sd
+B|and I just have to turn to stereo up real loud|sd
+A|Yeah.|b
+A|But it's a lot less stressful on the joints then jogging is.|sv
+B|Yeah,|aa
+B|it is|aa
+B|and this doesn't, you know,|%
+B|my treadmill has an incline|sd
+B|and, you know, you can get a really good workout on it.|sv
+A|Um, do you go to an aerobics class|qy
+A|or do you watch, on T V?|qrr
+B|No,|nn
+B|I, I just do it on T V,|sd
+A|Okay.|bk
+B|I have a cassette.|sd
+A|Which, uh, shows do you watch on T V?|qw
+B|Um, it's a, it's a|%
+B|I use tapes.|sd
+A|Oh, okay,|bk
+A|okay,|b
+A|like a Cathy Smith workout,|bf
+B|Or, or Richard Simmons,|sd
+A|or Jane Fonda.|^2
+A|Okay|bk
+B|Sweating to the oldies|bf
+A|Right.|aa
+A|I, every now and then I'll watch E S P N,|sd
+A|I get cable on T V,|sd
+B|Uh-huh.|b
+A|and they have, uh, a couple of shows called basic training,|sd
+A|and, uh, what is the other one called.|qw
+B|There was one guy I use to watch on E S P N,|sd
+B|I don't know if he's still on any more or not,|sd
+B|I I don't know if I get E S P N or not|sd
+A|Uh-huh.|b
+B|But, uh, one, you know,|%
+B|I use to watch one, watch one on the air,|sd
+B|but that was back,|sd
+A|BODIES IN MOTION that's, that's the name of the one I was thinking of. With Gill.|sd
+B|That's was,|%
+B|yeah.|b
+B|Yeah.|b
+B|Yeah,|b
+B|I watched that cause he was cute|sd
+A|Yeah,|aa
+A|he's not bad|aap_am
+A|his assistants usually aren't either.|sv
+B|But, uh,|%
+A|They're always in, in Hawaii some place. On, on the beach.|sd
+B|Yeah,|b
+B|yeah.|b
+B|But then that was back when, uh, you know, the high impact and,|sd
+A|Yeah,|b
+A|well, they, they do low I pact stuff now,|sd
+B|Do they.|bh
+B|Are|%
+B|yeah|b
+B|they're still, they're still, he's still doing it then, uh.|qy^d
+A|Yeah,|ny
+A|every morning.|sd
+B|I'll have to tune in.|sd
+A|It's on E S P N, uh,|sd
+A|at what time,|t1
+A|I can't remember what time.|sd
+A|It's, uh, you know,|%
+A|I can't remember offhand what time.|sd
+B|I'll have to check it, check, check, check it back up,|sd
+A|Yeah|b
+B|and, but the thing is everybody always looks so good on that show, at least on|sv
+A|Yeah,|b
+A|every now and then.|%
+B|Not everybody has a picture perfect body.|sv
+A|Uh-huh,|b
+A|well, I found that they, they have just a much better program than the other shows that are on T V.|sv
+B|I haven't watch any other ones on T V. watch=watched Just on some of the tapes.|sd
+A|They're on weekdays at eleven o'clock every day. Monday through Friday incase you're interested in that.|sd
+B|Okay,|b
+B|thanks.|ft
+A|but, uh, I haven't done so much as, uh, watch the tape that I made.|sd
+B|Now, that's a thought.|sv
+A|So I'm kind of bad about that myself.|sd
+B|Well, that's thought,|sd
+B|I haven't thought about that,|sd
+B|well they're going to beep us pretty soon.|sd
+A|Okay,|b
+A|well, I sure enjoyed, to you about exercise and fitness.|fc
+B|Nice talking to you too.|fc
+B|Okay,|fc
+B|thanks.|ft
+A|So, all right.|fc
+B|Talk to you later.|fc
+A|Good night.|fc
+B|Bye.|fc
+A|Bye.|fc
+B|Uh, well what would you say your opinion is on gun control?|qw
+A|Well, I don't know.|h
+A|I've, I've had mixed emotions, I guess, when I listen to, uh, the radio and, and watch T V about the different, uh, things that are happening.|sd
+A|Uh, I'm against it|sd
+A|but on the same token, uh, I went out and purchased a gun just because I wanted the right to do that|sd
+B||%
+A|So  I, I have a rifle in the house.|sd
+A|Uh, the ammunition is probably so old I'm afraid to use it.|sd
+A|But, uh, I bought it for target practicing and, uh, and also because I wanted a weapon.|sd
+A|Uh, how do you feel about it?|qo
+B|Well, I think, uh, down here in Texas they don't have a waiting period on handguns.|sv
+A|Huh.|%
+B|And, I think they need that.|sv
+B|Uh, and I do have a, I have a pistol.|sd
+B|It's a little twenty-two|sd
+B|and I have a twenty-two or a twelve gauge shotgun.|sd
+A|Uh-huh.|b
+B|you know, I do like to have my guns.|sd
+B|Uh, I  don't know if I'll ever use it, you know.|sd
+B|And like you, my bullets to my little pistol's probably, uh, about three years old|sd
+B|Uh, my gun hasn't been shot in a year or two.|sd
+A|Uh-huh.|b
+B|But, uh, I like to have them where handy.|sd
+A|Well, up, uh, up in New England where I'm from, uh, you had to get a permit before you could buy any ammunition.|sd
+A|And I thought that was really good.|sv
+A|And I think if they, uh,|sv
+A|takes two weeks for that system to process, uh, your request for, uh, not as a gun permit but, uh, but to buy ammunition.|sd
+A|You have to get a permit from the police station in your local area to do that.|sd
+B|I've never heard of anything like that.|sd
+A|Yeah. Uh,|b
+B|That would be nice.|sv
+B|But,  you know,|%
+B|the criminals that are going to get their guns  one  way or the other.|sv
+A|I  I, I agree.|aa
+A|I think, you know, one of the things that, that, that needs to happen is, uh, to, to stop the impulse buyer from, uh, buying it quickly and, and, uh, maybe putting a week's waiting period or something on it.|sv
+A|But if someone's really determined to, to pick up a firearm you can pick it up any place.|sv
+B|Yeah|b
+A|And  you can get them really cheap.|sv
+B|I know|aa
+B|I, I had a waiting period on my pistol because I was down in, uh, Tennessee. And, uh, they had a waiting period|sd
+A|Uh-huh.|b
+B|and, uh, we bought it there.|sd
+B|And,|%
+A|How  long was the waiting period out there?|qw
+B|About nine days.|sd
+A|Huh.|%
+A|That wasn't too, too bad.|sv
+B|No.|aa
+B|No|aa
+A|Because if, if you're going to go buy something, uh, uh, of that nature, I think you, you're going to have some idea as to what you're going to do with it.|sv
+A|You're not going to react that quickly.|sv
+A|In other words, you know, you don't have a need to go buy a gun to go shoot it the next day.|sv
+B|somebody wants to do that,|sv
+B|I, I, at times I think they ought to have a waiting period on all firearms.|sv
+A|Yeah.|aa
+A|I do too. Uh, because it doesn't make any difference, uh, uh, whether it's a pistol or a shotgun, I suppose.|sv
+A|They both  do the same kind of job.|sd
+B|A shotgun hurts worse  than a pistol does.|sv
+A|Uh, yeah.|aap_am
+A|I suppose.|aap_am
+A|I never got shot with either one.|sd
+A|But I don't know, uh,|h
+A|I think you could recover from a pistol but not from a shotgun|sv
+B|No,|aa
+B|a shotgun's got too much of a spread.|sv
+B|Or at  least ours does.|sd
+A|Yeah.|b
+B|Uh, it's, you know,|%
+B|you have a little, uh, thing on the bottom of on top of the barrel where you, you turn it,|sd
+A|Uh-huh.|b
+B|you can make it either tight or as loose as loose can get.|sd
+A|Oh.|b
+B|And the spread changes.|sd
+A|Uh, I've got a manual single shot|sd
+A|and I guess it doesn't have any, any automatic features to it.|sd
+A|The further away I get, the, the, uh, wider the shot gets from the target.|sd
+B|Yeah.|b
+A|And the closer that I get, the tighter that it gets.|sd
+A|It's got a hell of a kick to it.|sd
+B|Yeah.|b
+B|My husband had a, uh, a police gun at one time.|sd
+B|And I shot that thing one time.|sd
+B|Almost knocked me down.|sd
+B|And it just a|%
+B|I I forget,|sd
+B|I think it was a three fifty-seven.|sv
+B|I'm not sure.|h
+A|Do you belong to a gun club or you?|qy
+B|He belonged to one awhile back.|sd
+B|Uh, since we moved,|sd
+B|we've only been here in Texas for about a year|sd
+A|Uh-huh.|b
+B|and, uh, we can't even find a place to shoot.  Just for  target practice.|sd
+A|No kidding.|ba
+B|I'd love to get used to that shotgun.|sd
+B|We traded his pistol for that shotgun.|sd
+A|Huh. Well the, the, uh, clubs that we've got around here are kind of expensive|sd
+A|but, uh, it's well worth it.|sv
+A|You can go down and shoot up against a sand bag and some targets and have, uh, competition.|sd
+A|Uh, I've never really joined a club because I haven't got the time. Not because I haven't got the desire.|sd

@@ -1,32 +1,15 @@
 import os
-# Suppress TensorFlow debugging
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 import bert
 import optimization
-import confusion_matrix as cm
-import tokenization
-import collections
-from data_processor import InputFeatures
 
-
-def decode_record(record, name_to_features):
-    """Decodes a record to a TensorFlow example."""
-    example = tf.parse_single_example(record, name_to_features)
-
-    # tf.Example only supports tf.int64, but the TPU only supports tf.int32.
-    # So cast all int64 to int32.
-    for name in list(example.keys()):
-        t = example[name]
-        if t.dtype == tf.int64:
-            t = tf.to_int32(t)
-        example[name] = t
-
-    return example
+# Suppress TensorFlow debugging
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+tf.logging.set_verbosity(tf.logging.ERROR)
 
 
 def input_fn_builder(input_file, seq_length, is_training, drop_remainder):
-    """Creates an `input_fn` closure to be passed to TPUEstimator."""
+    """Creates an `input_fn` closure to be passed to Estimator."""
 
     name_to_features = {
         "input_ids": tf.FixedLenFeature([seq_length], tf.int64),
@@ -118,14 +101,14 @@ def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
 def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
                      num_train_steps, num_warmup_steps, use_tpu,
                      use_one_hot_embeddings):
-    """Returns `model_fn` closure for TPUEstimator."""
+    """Returns `model_fn` closure for Estimator."""
 
     def model_fn(features, labels, mode, params):  # pylint: disable=unused-argument
-        """The `model_fn` for TPUEstimator."""
+        """The `model_fn` for Estimator."""
 
-        tf.logging.info("*** Features ***")
-        for name in sorted(features.keys()):
-            tf.logging.info("  name = %s, shape = %s" % (name, features[name].shape))
+        # tf.logging.info("*** Features ***")
+        # for name in sorted(features.keys()):
+        #     tf.logging.info("  name = %s, shape = %s" % (name, features[name].shape))
 
         input_ids = features["input_ids"]
         input_mask = features["input_mask"]
@@ -135,10 +118,7 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
         is_training = (mode == tf.estimator.ModeKeys.TRAIN)
 
         (total_loss, per_example_loss, logits, probabilities, predictions) = create_model(
-            bert_config, is_training, input_ids, input_mask, segment_ids, label_ids,
-            num_labels, use_one_hot_embeddings)
-
-
+            bert_config, is_training, input_ids, input_mask, segment_ids, label_ids, num_labels, use_one_hot_embeddings)
 
         tvars = tf.trainable_variables()
         initialized_variable_names = {}
@@ -146,25 +126,20 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
         if init_checkpoint:
             assignment_map, initialized_variable_names = bert.get_assignment_map_from_checkpoint(tvars, init_checkpoint)
             tf.train.init_from_checkpoint(init_checkpoint, assignment_map)
+        tf.logging.info("Model restored from " + init_checkpoint)
 
-        tf.logging.info("**** Trainable Variables ****")
-        for var in tvars:
-            init_string = ""
-            if var.name in initialized_variable_names:
-                init_string = ", *INIT_FROM_CKPT*"
-            tf.logging.info("  name = %s, shape = %s%s", var.name, var.shape, init_string)
+        # tf.logging.info("**** Trainable Variables ****")
+        # for var in tvars:
+        #     init_string = ""
+        #     if var.name in initialized_variable_names:
+        #         init_string = ", *INIT_FROM_CKPT*"
+        #     tf.logging.info("  name = %s, shape = %s%s", var.name, var.shape, init_string)
 
         eval_metrics = {}
         with tf.variable_scope("accuracy"):
             accuracy = tf.metrics.accuracy(label_ids, predictions)
-            tf.summary.scalar('Taccuracy', accuracy[1])
-        eval_metrics['accuracy/Eaccuracy'] = accuracy
-
-        ''' confusion matrix summaries '''
-        img_d_summary_dir = os.path.join('mrda_output', "summaries", "img")
-        img_d_summary_writer = tf.summary.FileWriter(img_d_summary_dir)
-        img_d_summary = cm.plot_confusion_matrix(label_ids, predictions, labels, tensor_name='dev/cm')
-        img_d_summary_writer.add_summary(img_d_summary)
+            tf.summary.scalar('Train_accuracy', accuracy[1])
+        eval_metrics['accuracy/Eval_accuracy'] = accuracy
 
         output_spec = None
         if mode == tf.estimator.ModeKeys.TRAIN:
@@ -178,16 +153,6 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
 
         elif mode == tf.estimator.ModeKeys.EVAL:
 
-            # def metric_fn(per_example_loss, label_ids, logits):
-            #     predictions = tf.argmax(logits, axis=-1, output_type=tf.int32)
-            #     eval_accuracy = tf.metrics.accuracy(label_ids, predictions)
-            #     loss = tf.metrics.mean(per_example_loss)
-            #     return {
-            #         "eval_accuracy": eval_accuracy,
-            #         "eval_loss": loss,
-            #     }
-
-            # eval_metrics = (metric_fn, [per_example_loss, label_ids, logits])
             output_spec = tf.estimator.EstimatorSpec(
                 mode=mode,
                 loss=total_loss,

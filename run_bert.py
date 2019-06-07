@@ -1,23 +1,26 @@
 import os
+import sys
+import logger
+import time
+import datetime
 import bert
 import data_processor
+import optimization
 import tokenization
-import numpy as np
-import bert_utilities as utils
 import tensorflow as tf
-from sklearn.preprocessing import label_binarize
+import confusion_matrix as cf
+import numpy as np
 from sklearn.metrics import precision_recall_fscore_support
-import confusion_matrix as cm
 
 # Suppress TensorFlow debugging
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-tf.logging.set_verbosity(tf.logging.INFO)
+tf.logging.set_verbosity(tf.logging.ERROR)
 # Disable GPU's
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 # Set number of CPU Cores to use
-config = tf.ConfigProto(device_count={"CPU": 24},
-                        inter_op_parallelism_threads=24,
-                        intra_op_parallelism_threads=24)
+config = tf.ConfigProto(device_count={"CPU": 8},
+                        inter_op_parallelism_threads=8,
+                        intra_op_parallelism_threads=8)
 tf.Session(config=config)
 
 # Task name
@@ -29,15 +32,19 @@ processors = {
 
 # Data source and output paths
 data_dir = task_name + '_data/'
-output_dir = task_name + '_output'
+output_dir = task_name + '_output/'
+tensorboard_dir = output_dir + 'tb_log'
+model_dir = output_dir + 'model/'
+# Save std out to log file
+log_file = output_dir + "output.txt"
+sys.stdout = logger.Logger(log_file)
 
 # Training parameters
 max_seq_length = 128  # TODO Needs args?
 batch_size = 32
 learning_rate = 2e-5
-num_epochs = 3.0  # Default 3
-save_checkpoint_steps = 1000
-evaluate_secs = 3600
+num_epochs = 3  # Default 3
+num_evaluations = 3  # Number of evaluations to make per epoch
 training = True
 testing = True
 
@@ -47,23 +54,20 @@ print("Maximum sequence length: ", max_seq_length)
 print("Batch size: ", batch_size)
 print("Learning Rate: ", learning_rate)
 print("Epochs: ", num_epochs)
-print("Save checkpoints every " + str(save_checkpoint_steps) + " steps")
-print("Evaluate every " + str(evaluate_secs) + " seconds")
+print("Evaluations per epoch: ", num_evaluations)
 print("Training: ", training)
 print("Testing: ", testing)
 
 # Configure BERT
 bert_model_type = 'BERT_Base'  # TODO Needs arg?
 do_lower_case = True  # TODO Needs arg?
+fine_tune = True  # TODO Needs arg?
 bert_config = bert.BertConfig.from_json_file(bert_model_type + '/bert_config.json')
-if max_seq_length > bert_config.max_position_embeddings:
-    raise ValueError(
-        "Cannot use sequence length %d because the BERT model "
-        "was only trained up to sequence length %d" %
-        (max_seq_length, bert_config.max_position_embeddings))
-
 # BERT model checkpoint
-init_checkpoint = bert_model_type + '/bert_model.ckpt'  # TODO Needs arg?
+if fine_tune:
+    init_checkpoint = bert_model_type + '/bert_model.ckpt'
+else:
+    init_checkpoint = tf.train.latest_checkpoint(model_dir)
 
 print("------------------------------------")
 print("Configured BERT Model...")
@@ -78,39 +82,41 @@ tokenizer = tokenization.FullTokenizer(vocab_file=bert_model_type + '/vocab.txt'
 labels = dataset_processor.get_labels(data_dir)
 
 # Training data
+train_data_file = os.path.join(output_dir, "train.tf_record")
 training_examples = dataset_processor.get_train_examples(data_dir)
-train_data_file = os.path.join(output_dir, 'datasets', "train.tf_record")
 data_processor.convert_examples_to_features(training_examples, labels, max_seq_length, tokenizer, train_data_file)
-train_input_fn = utils.input_fn_builder(
-    train_data_file,
-    max_seq_length,
-    is_training=True,
-    drop_remainder=True)
+train_dataset = data_processor.build_dataset(train_data_file, max_seq_length, batch_size, is_training=True)
 
 # Evaluation data
+eval_data_file = os.path.join(output_dir, "eval.tf_record")
 evaluation_examples = dataset_processor.get_eval_examples(data_dir)
-eval_data_file = os.path.join(output_dir, 'datasets', "eval.tf_record")
 data_processor.convert_examples_to_features(evaluation_examples, labels, max_seq_length, tokenizer, eval_data_file)
-eval_input_fn = utils.input_fn_builder(
-    input_file=eval_data_file,
-    seq_length=max_seq_length,
-    is_training=False,
-    drop_remainder=False)
+eval_dataset = data_processor.build_dataset(eval_data_file, max_seq_length, batch_size, is_training=False)
 
 # Test data
+test_data_file = os.path.join(output_dir, "test.tf_record")
 test_examples = dataset_processor.get_test_examples(data_dir)
-test_data_file = os.path.join(output_dir, 'datasets', "test.tf_record")
 data_processor.convert_examples_to_features(test_examples, labels, max_seq_length, tokenizer, test_data_file)
-test_input_fn = utils.input_fn_builder(
-    input_file=test_data_file,
-    seq_length=max_seq_length,
-    is_training=False,
-    drop_remainder=False)
+test_dataset = data_processor.build_dataset(test_data_file, max_seq_length, batch_size, is_training=False)
 
-# Set number of training, evaluation and test steps
-num_training_steps = int(len(training_examples) / batch_size * num_epochs)
-num_evaluation_steps = int(len(evaluation_examples) / batch_size)
-num_test_steps = int(len(test_examples) / batch_size)
+# Create iterators
+handle_pl = tf.placeholder(tf.string, shape=[])
+iterator = tf.data.Iterator.from_string_handle(handle_pl, train_dataset.output_types, train_dataset.output_shapes)
+iterator_next = iterator.get_next()
+
+input_ids = tf.convert_to_tensor(iterator_next["input_ids"], name='input_ids')
+input_mask = tf.convert_to_tensor(iterator_next["input_mask"], name='input_mask')
+segment_ids = tf.convert_to_tensor(iterator_next["segment_ids"], name='segment_ids')
+label_ids = tf.convert_to_tensor(iterator_next["label_ids"], name='label_ids')
+
+train_iterator = train_dataset.make_initializable_iterator()
+eval_iterator = eval_dataset.make_initializable_iterator()
+test_iterator = test_dataset.make_initializable_iterator()
+
+# Set number of training, evaluation and test steps (+1 so we dont miss the last partial batch)
+num_training_steps = int(len(training_examples) / batch_size) + 1
+num_evaluation_steps = int(len(evaluation_examples) / batch_size) + 1
+num_test_steps = int(len(test_examples) / batch_size) + 1
 
 print("------------------------------------")
 print("Prepared data...")
@@ -125,98 +131,274 @@ print("Number of test steps: ", num_test_steps)
 # Define BERT Model
 print("------------------------------------")
 print("Define BERT Model...")
-model_fn = utils.model_fn_builder(
-    bert_config=bert_config,
-    num_labels=len(labels),
-    init_checkpoint=init_checkpoint,
-    learning_rate=learning_rate,
-    num_train_steps=num_training_steps,
-    num_warmup_steps=0,
-    use_tpu=False,
+model = bert.BertModel(
+    config=bert_config,
+    is_training=True,
+    input_ids=input_ids,
+    input_mask=input_mask,
+    token_type_ids=segment_ids,
     use_one_hot_embeddings=False)
 
-run_config = tf.estimator.RunConfig(model_dir=output_dir, save_checkpoints_steps=save_checkpoint_steps, save_summary_steps=save_checkpoint_steps)
-estimator = tf.estimator.Estimator(model_fn, model_dir=output_dir, config=run_config, params={'batch_size': batch_size})
+# In the demo, we are doing a simple classification task on the entire segment.
+# If you want to use the token-level output, use model.get_sequence_output() instead.
+output_layer = model.get_pooled_output()
 
-if training:
-    # Train BERT
-    print("------------------------------------")
-    print("Train Model...")
-    train_spec = tf.estimator.TrainSpec(input_fn=train_input_fn, max_steps=num_training_steps)
-    eval_spec = tf.estimator.EvalSpec(input_fn=eval_input_fn, steps=num_evaluation_steps, throttle_secs=evaluate_secs)
-    eval_metrics = tf.estimator.train_and_evaluate(estimator, train_spec, eval_spec)
+hidden_size = output_layer.shape[-1].value
 
-    # Write the evaluation results to a file
-    eval_results_file = os.path.join(output_dir, "eval", "eval_results.txt")
-    with open(eval_results_file, "w") as file:
-        print("***** Evaluation results *****")
-        file.write("***** Evaluation results *****\n")
-        for key in eval_metrics[0].keys():
-            print("%s = %s" % (key, str(eval_metrics[0][key])))
-            file.write("%s = %s\n" % (key, str(eval_metrics[0][key])))
+output_weights = tf.get_variable(
+    "output_weights", [len(labels), hidden_size],
+    initializer=tf.truncated_normal_initializer(stddev=0.02))
 
-if testing:
-    # Test BERT
-    print("------------------------------------")
-    print("Test Model...")
-    test_results = estimator.predict(input_fn=test_input_fn)
+output_bias = tf.get_variable(
+    "output_bias", [len(labels)], initializer=tf.zeros_initializer())
 
-    # Make a copy because otherwise TF likes to delete the results after accessing
-    test_predictions = [prediction for prediction in test_results]
-    test_metrics = dict()
+# Calculate the cost
+with tf.variable_scope("loss"):
+    # if is_training:
+    if model.is_training:
+        # I.e., 0.1 dropout
+        output_layer = tf.nn.dropout(output_layer, keep_prob=0.9)
 
-    # Get the actual labels from the data and convert to one hot
-    true_labels = [test_examples[i].label for i in range(len(test_examples))]
-    true_labels = label_binarize(true_labels, labels)
+    logits = tf.matmul(output_layer, output_weights, transpose_b=True)
+    logits = tf.nn.bias_add(logits, output_bias)
+    probabilities = tf.nn.softmax(logits, axis=-1)
+    predictions = tf.argmax(logits, axis=-1, output_type=tf.int32)
+    log_probs = tf.nn.log_softmax(logits, axis=-1)
 
-    # Get the index of the prediction/actual labels
-    true_labels = [np.argmax(prediction) for prediction in true_labels]
-    predicted_labels = [np.argmax(prediction) for prediction in test_predictions]
+    one_hot_labels = tf.one_hot(label_ids, depth=len(labels), dtype=tf.float32)
 
-    # Calculate the accuracy
-    with tf.variable_scope("accuracy"):
-        accuracy = 0.0
-        for i in range(len(true_labels)):
-            if true_labels[i] == predicted_labels[i]:
-                accuracy += 1
-        accuracy = accuracy / len(true_labels)
-        test_metrics['Accuracy'] = accuracy
-        accuracy_summary = tf.summary.scalar('Test_accuracy', accuracy)
+    per_example_loss = -tf.reduce_sum(one_hot_labels * log_probs, axis=-1)
+    loss = tf.reduce_mean(per_example_loss)
+    loss_pl = tf.placeholder(tf.float32)
+    loss_summary = tf.summary.scalar('Loss', loss_pl)
 
-    # Calculate precision, recall and F1
-    with tf.variable_scope("F1_macro"):
-        precision_mac, recall_mac, f1_mac, _ = precision_recall_fscore_support(true_labels, predicted_labels, average='macro')
-        test_metrics['Precision_macro'] = precision_mac
-        test_metrics['Recall_macro'] = recall_mac
-        test_metrics['F1_macro'] = precision_mac
-        precision_mac_summary = tf.summary.scalar('Precision_macro', precision_mac)
-        recall_mac_summary = tf.summary.scalar('Recall_macro', recall_mac)
-        f1_mac_summary = tf.summary.scalar('F1_macro', f1_mac)
+# Optimisation function
+with tf.name_scope('optimizer'):
+    optimizer = optimization.create_optimizer(loss, learning_rate, num_training_steps, 0, False)
 
-    with tf.variable_scope("F1_micro"):
-        precision_mic, recall_mic, f1_mic, _ = precision_recall_fscore_support(true_labels, predicted_labels, average='micro')
-        test_metrics['Precision_micro'] = precision_mic
-        test_metrics['Recall_micro'] = recall_mic
-        test_metrics['F1_micro'] = f1_mic
-        precision_mic_summary = tf.summary.scalar('Precision_micro', precision_mic)
-        recall_mic_summary = tf.summary.scalar('Recall_micro', recall_mic)
-        f1_mic_summary = tf.summary.scalar('F1_micro', f1_mic)
+# Calculate accuracy
+with tf.name_scope('accuracy'):
+    correct_prediction = tf.equal(predictions, tf.cast(label_ids, tf.int32))
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+    accuracy_pl = tf.placeholder(tf.float32)
+    accuracy_summary = tf.summary.scalar('Accuracy', accuracy_pl)
 
-    with tf.variable_scope("F1_weighted"):
-        precision_weight, recall_weight, f1_weight, _ = precision_recall_fscore_support(true_labels, predicted_labels, average='weighted')
-        test_metrics['Precision_weighted'] = precision_weight
-        test_metrics['Recall_weighted'] = recall_weight
-        test_metrics['F1_weighted'] = f1_weight
-        precision_weight_summary = tf.summary.scalar('Precision_weighted', precision_weight)
-        recall_weight_summary = tf.summary.scalar('Recall_weighted', recall_weight)
-        f1_weight_summary = tf.summary.scalar('F1_weighted', f1_weight)
+# Restore model from checkpoint
+trainable_vars = tf.trainable_variables()
+if init_checkpoint:
+    assignment_map, _ = bert.get_assignment_map_from_checkpoint(trainable_vars, init_checkpoint)
+    tf.train.init_from_checkpoint(init_checkpoint, assignment_map)
 
-    # Add the summaries to tensorboard
-    with tf.Session() as sess:
-        test_writer = tf.summary.FileWriter('%s/%s' % (output_dir, 'test'), sess.graph)
+saver = tf.train.Saver()
+print("Model restored from " + init_checkpoint)
 
-        # Accuracy
-        test_writer.add_summary(accuracy_summary.eval(), num_training_steps)
+# Run Tensorflow session
+with tf.Session() as sess:
+    # Remove old Tensorboard directory
+    if training:
+        if tf.gfile.Exists(tensorboard_dir + '/train'):
+            tf.gfile.DeleteRecursively(tensorboard_dir + '/train')
+        if tf.gfile.Exists(tensorboard_dir + '/eval'):
+            tf.gfile.DeleteRecursively(tensorboard_dir + '/eval')
+    if testing:
+        if tf.gfile.Exists(tensorboard_dir + '/test'):
+            tf.gfile.DeleteRecursively(tensorboard_dir + '/test')
+
+    # Create Tensorboard writers for the training and test data
+    train_writer = tf.summary.FileWriter('%s/%s' % (tensorboard_dir, 'train'), sess.graph)
+    eval_writer = tf.summary.FileWriter('%s/%s' % (tensorboard_dir, 'eval'), sess.graph)
+    test_writer = tf.summary.FileWriter('%s/%s' % (tensorboard_dir, 'test'), sess.graph)
+    summary = tf.summary.merge([accuracy_summary, loss_summary])
+
+    # Initialise all the variables
+    sess.run(tf.global_variables_initializer())
+
+    # Initialise the iterator handles
+    train_handle = sess.run(train_iterator.string_handle())
+    eval_handle = sess.run(eval_iterator.string_handle())
+    test_handle = sess.run(test_iterator.string_handle())
+
+    # Total number of training steps
+    num_global_steps = num_training_steps * num_epochs
+
+    if training:
+        # Train the model
+        print("------------------------------------")
+        print("Training model...")
+        start_time = time.time()
+        print("Training started: " + datetime.datetime.now().strftime("%b %d %T") + " for", num_epochs, "epochs")
+
+        global_step = 0
+        # Run for number of training epochs
+        for epoch in range(1, num_epochs + 1):
+
+            # For accumulating the epoch loss and accuracy stats
+            train_loss = []
+            train_accuracy = []
+            eval_loss = []
+            eval_accuracy = []
+
+            # Initialise the training dataset
+            sess.run(train_iterator.initializer)
+            for train_step in range(1, num_training_steps + 1):
+                # Need to switch model to training
+                model.is_training = True
+                global_step += 1
+
+                _, train_batch_loss, train_batch_logits, train_batch_accuracy = \
+                    sess.run([optimizer, loss, logits, accuracy], feed_dict={handle_pl: train_handle})
+                train_loss.append(train_batch_loss)
+                train_accuracy.append(train_batch_accuracy)
+
+                # Evaluate every num_evaluations during training
+                if train_step % int(num_training_steps / num_evaluations) == 0:
+
+                    # For accumulating this evaluations loss and accuracy stats
+                    eval_step_loss = []
+                    eval_step_accuracy = []
+                    # For accumulating this evaluations predictions for confusion matrix
+                    eval_step_predictions = []
+                    eval_step_labels = []
+
+                    # Initialise the evaluation dataset
+                    sess.run(eval_iterator.initializer)
+                    for eval_step in range(1, num_evaluation_steps + 1):
+                        # Need to switch model to not training
+                        model.is_training = False
+
+                        eval_batch_loss, eval_batch_logits, eval_batch_accuracy, eval_batch_predictions, eval_batch_labels = \
+                            sess.run([loss, logits, accuracy, predictions, label_ids],
+                                     feed_dict={handle_pl: eval_handle})
+                        eval_loss.append(eval_batch_loss)
+                        eval_accuracy.append(eval_batch_accuracy)
+                        eval_step_loss.append(eval_batch_loss)
+                        eval_step_accuracy.append(eval_batch_accuracy)
+                        eval_step_predictions = np.concatenate((eval_step_predictions, eval_batch_predictions),
+                                                               axis=None)
+                        eval_step_labels = np.concatenate((eval_step_labels, eval_batch_labels), axis=None)
+
+                    # Record training summaries
+                    train_summary = sess.run(summary,
+                                             feed_dict={accuracy_pl: sum(train_accuracy) / len(train_accuracy),
+                                                        loss_pl: sum(train_loss) / len(train_loss)})
+                    train_writer.add_summary(train_summary, global_step)
+
+                    eval_summary = sess.run(summary,
+                                            feed_dict={accuracy_pl: sum(eval_step_accuracy) / len(eval_step_accuracy),
+                                                       loss_pl: sum(eval_step_loss) / len(eval_step_loss)})
+                    eval_writer.add_summary(eval_summary, global_step)
+
+                    # Record confusion matrix
+                    cm_summary, cm_fig = cf.plot_confusion_matrix(eval_step_labels, eval_step_predictions, labels,
+                                                                  tensor_name='eval_confusion_matrix')
+                    eval_writer.add_summary(cm_summary, global_step)
+
+                    # Display step statistics
+                    print("Step: {}/{} - "
+                          "Training loss: {:.3f}, accuracy: {:.3f}% - "
+                          "Evaluation loss: {:.3f}, accuracy: {:.3f}%".format(global_step, num_global_steps,
+                                                                         (sum(train_loss) / len(train_loss)),
+                                                                         ((sum(train_accuracy) * 100) / len(
+                                                                             train_accuracy)),
+                                                                         (sum(eval_step_loss) / len(eval_step_loss)),
+                                                                         ((sum(eval_step_accuracy) * 100) / len(
+                                                                             eval_step_accuracy))))
+
+                    # Save the model
+                    saver.save(sess, model_dir + task_name, global_step=global_step, write_meta_graph=False)
+
+            # Display epoch statistics
+            print("Epoch: {}/{} - "
+                  "Training loss: {:.3f}, accuracy: {:.3f}% - "
+                  "Evaluation loss: {:.3f}, accuracy: {:.3f}%".format(epoch, num_epochs,
+                                                                 (sum(train_loss) / len(train_loss)),
+                                                                 ((sum(train_accuracy) * 100) / len(train_accuracy)),
+                                                                 (sum(eval_loss) / len(eval_loss)),
+                                                                 ((sum(eval_accuracy) * 100) / len(eval_accuracy))))
+
+            # If this is the last global step then save the model
+            if global_step == num_global_steps:
+                saver.save(sess, model_dir + task_name, global_step=global_step, write_meta_graph=False)
+
+        end_time = time.time()
+        print("Training took " + str(('%.3f' % (end_time - start_time))) + " seconds for", num_epochs, "epochs")
+
+    if testing:
+        # Test the model
+        print("------------------------------------")
+        print("Testing model...")
+        start_time = time.time()
+        print("Testing started: " + datetime.datetime.now().strftime("%b %d %T"))
+
+        # For accumulating the test loss and accuracy stats
+        test_loss = []
+        test_accuracy = []
+        # For accumulating this evaluations predictions for confusion matrix
+        test_probabilities = []
+        test_predictions = []
+        test_labels = []
+
+        # Need to switch model to not training
+        model.is_training = False
+
+        # Initialise the training dataset
+        sess.run(test_iterator.initializer)
+        for test_step in range(1, num_test_steps + 1):
+            test_batch_loss, test_batch_logits, test_batch_accuracy, test_batch_probabilities, test_batch_predictions, test_batch_labels = \
+                sess.run([loss, logits, accuracy, probabilities, predictions, label_ids],
+                         feed_dict={handle_pl: test_handle})
+            test_loss.append(test_batch_loss)
+            test_accuracy.append(test_batch_accuracy)
+            for i in range(len(test_batch_probabilities)):
+                test_probabilities.append(test_batch_probabilities[i])
+            test_predictions = np.concatenate((test_predictions, test_batch_predictions), axis=None)
+            test_labels = np.concatenate((test_labels, test_batch_labels), axis=None)
+
+        # Record training summaries
+        test_summary = sess.run(summary, feed_dict={accuracy_pl: sum(test_accuracy) / len(test_accuracy),
+                                                    loss_pl: sum(test_loss) / len(test_loss)})
+        test_writer.add_summary(test_summary, num_global_steps)
+
+        # Record confusion matrix
+        cm_summary, cm_fig = cf.plot_confusion_matrix(test_labels, test_predictions, labels,
+                                                      tensor_name='test_confusion_matrix')
+        test_writer.add_summary(cm_summary, num_global_steps)
+
+        # Write the prediction results to a file
+        test_predictions_file = os.path.join(output_dir, "test_predictions.csv")
+        with open(test_predictions_file, "w") as file:
+            for prediction in test_probabilities:
+                output_line = ",".join(str(class_probability) for class_probability in prediction) + "\n"
+                file.write(output_line)
+
+        test_metrics = dict()
+        # Calculate precision, recall and F1
+        with tf.variable_scope("F1_macro"):
+            precision_mac, recall_mac, f1_mac, _ = precision_recall_fscore_support(test_labels, test_predictions, average='macro')
+            test_metrics['Precision_macro'] = precision_mac
+            test_metrics['Recall_macro'] = recall_mac
+            test_metrics['F1_macro'] = precision_mac
+            precision_mac_summary = tf.summary.scalar('Precision_macro', precision_mac)
+            recall_mac_summary = tf.summary.scalar('Recall_macro', recall_mac)
+            f1_mac_summary = tf.summary.scalar('F1_macro', f1_mac)
+
+        with tf.variable_scope("F1_micro"):
+            precision_mic, recall_mic, f1_mic, _ = precision_recall_fscore_support(test_labels, test_predictions, average='micro')
+            test_metrics['Precision_micro'] = precision_mic
+            test_metrics['Recall_micro'] = recall_mic
+            test_metrics['F1_micro'] = f1_mic
+            precision_mic_summary = tf.summary.scalar('Precision_micro', precision_mic)
+            recall_mic_summary = tf.summary.scalar('Recall_micro', recall_mic)
+            f1_mic_summary = tf.summary.scalar('F1_micro', f1_mic)
+
+        with tf.variable_scope("F1_weighted"):
+            precision_weight, recall_weight, f1_weight, _ = precision_recall_fscore_support(test_labels, test_predictions, average='weighted')
+            test_metrics['Precision_weighted'] = precision_weight
+            test_metrics['Recall_weighted'] = recall_weight
+            test_metrics['F1_weighted'] = f1_weight
+            precision_weight_summary = tf.summary.scalar('Precision_weighted', precision_weight)
+            recall_weight_summary = tf.summary.scalar('Recall_weighted', recall_weight)
+            f1_weight_summary = tf.summary.scalar('F1_weighted', f1_weight)
 
         # Macro F1
         test_writer.add_summary(precision_mac_summary.eval(), num_training_steps)
@@ -233,26 +415,12 @@ if testing:
         test_writer.add_summary(recall_weight_summary.eval(), num_training_steps)
         test_writer.add_summary(f1_weight_summary.eval(), num_training_steps)
 
-        # Confusion Matrix
-        cm_summary, matrix = cm.plot_confusion_matrix(true_labels, predicted_labels, labels)
-        test_writer.add_summary(cm_summary, num_training_steps)
+        # Display test statistics
+        print("Testing loss: {:.3f}, accuracy: {:.3f}%".format((sum(test_loss) / len(test_loss)),
+                                                          (sum(test_accuracy) * 100) / len(test_accuracy)))
 
-    # Write the results to a file
-    test_predictions_file = os.path.join(output_dir, "test", "test_predictions.csv")
-    with open(test_predictions_file, "w") as file:
-        for prediction in test_predictions:
-            output_line = ",".join(str(class_probability) for class_probability in prediction) + "\n"
-            file.write(output_line)
+        for key in sorted(test_metrics.keys()):
+            print("{}: {:.3f}".format(key, test_metrics[key]))
 
-    test_results_file = os.path.join(output_dir, "test", "test_results.txt")
-    with open(test_results_file, "a+") as file:
-        print("***** Test results *****")
-        file.write("***** Test results *****\n")
-        for key in test_metrics.keys():
-            print("%s = %s" % (key, str(test_metrics[key])))
-            file.write("%s = %s\n" % (key, str(test_metrics[key])))
-
-# https://stats.stackexchange.com/questions/21551/how-to-compute-precision-recall-for-multiclass-multilabel-classification
-# https://vict0rs.ch/2018/06/06/tensorflow-streaming-multilabel-f1/
-# http://gabrielelanaro.github.io/blog/2016/02/03/multiclass-evaluation-measures.html
-# https://github.com/guillaumegenthial/tf_metrics
+        end_time = time.time()
+        print("Testing took " + str(('%.3f' % (end_time - start_time))) + " seconds")

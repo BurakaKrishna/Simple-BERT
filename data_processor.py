@@ -75,7 +75,7 @@ class SwdaProcessor(DataProcessor):
 
     def get_train_examples(self, data_dir):
         """Training Set."""
-        with open(data_dir + 'train_set.txt', "r") as file:
+        with open(data_dir + 'train_small.txt', "r") as file:
             # Read a line and strip newline char
             lines = [line.rstrip('\r\n') for line in file.readlines()]
         return self._create_examples(lines, "train")
@@ -83,7 +83,7 @@ class SwdaProcessor(DataProcessor):
     def get_eval_examples(self, data_dir):
         """Evaluation Set.
         Set here WILL have labels and be used to evaluate training"""
-        with open(data_dir + 'eval_set.txt', "r") as file:
+        with open(data_dir + 'eval_small.txt', "r") as file:
             # Read a line and strip newline char
             lines = [line.rstrip('\r\n') for line in file.readlines()]
         return self._create_examples(lines, "eval")
@@ -124,7 +124,7 @@ class MrdaProcessor(DataProcessor):
 
     def get_train_examples(self, data_dir):
         """Training Set."""
-        with open(data_dir + 'train_set.txt', "r") as file:
+        with open(data_dir + 'train_small.txt', "r") as file:
             # Read a line and strip newline char
             lines = [line.rstrip('\r\n') for line in file.readlines()]
         return self._create_examples(lines, "train")
@@ -132,7 +132,7 @@ class MrdaProcessor(DataProcessor):
     def get_eval_examples(self, data_dir):
         """Evaluation Set.
         Set here WILL have labels and be used to evaluate training"""
-        with open(data_dir + 'eval_set.txt', "r") as file:
+        with open(data_dir + 'eval_small.txt', "r") as file:
             # Read a line and strip newline char
             lines = [line.rstrip('\r\n') for line in file.readlines()]
         return self._create_examples(lines, "eval")
@@ -140,7 +140,7 @@ class MrdaProcessor(DataProcessor):
     def get_test_examples(self, data_dir):
         """Test Set.
         Set here will NOT have labels and be used to make predictions"""
-        with open(data_dir + 'test_set.txt', "r") as file:
+        with open(data_dir + 'test_small.txt', "r") as file:
             # Read a line and strip newline char
             lines = [line.rstrip('\r\n') for line in file.readlines()]
         return self._create_examples(lines, "test")
@@ -242,14 +242,14 @@ def convert_single_example(ex_index, example, label_list, max_seq_length, tokeni
     assert len(segment_ids) == max_seq_length
 
     label_id = label_map[example.label]
-    if ex_index < 5:
-        tf.logging.info("*** Example ***")
-        tf.logging.info("guid: %s" % example.guid)
-        tf.logging.info("tokens: %s" % " ".join([tokenization.printable_text(x) for x in tokens]))
-        tf.logging.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
-        tf.logging.info("input_mask: %s" % " ".join([str(x) for x in input_mask]))
-        tf.logging.info("segment_ids: %s" % " ".join([str(x) for x in segment_ids]))
-        tf.logging.info("label: %s (id = %d)" % (example.label, label_id))
+    # if ex_index < 5:
+    #     tf.logging.info("*** Example ***")
+    #     tf.logging.info("guid: %s" % example.guid)
+    #     tf.logging.info("tokens: %s" % " ".join([tokenization.printable_text(x) for x in tokens]))
+    #     tf.logging.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
+    #     tf.logging.info("input_mask: %s" % " ".join([str(x) for x in input_mask]))
+    #     tf.logging.info("segment_ids: %s" % " ".join([str(x) for x in segment_ids]))
+    #     tf.logging.info("label: %s (id = %d)" % (example.label, label_id))
 
     feature = InputFeatures(
         input_ids=input_ids,

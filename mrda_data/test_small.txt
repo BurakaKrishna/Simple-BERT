@@ -1,0 +1,110 @@
+mn015|okay.|F|fg|fg
+mn015|some some introductions are in order.|S|s|t
+fe004|oh okay.|S|s|bk
+fe004|sorry.|S|s|fa
+mn015|okay.|F|fg|fg
+fe004|getting ahead of myself.|S|s|df
+mn015|so|F|fg|fg
+mn015|um for those who don't know|D|fh|fh
+mn015|everyone knows me.|S|s|s
+mn015|this is great.|S|s|ba
+fe004|yay!|S|s|ba
+mn015|um apart from that sort of the old gang johno and bhaskara have been with us from from day one.|S|fg|fg
+me045|hi.|S|s|s
+mn015|and um they're engaged in in various activities some of which you will hear about today.|S|fh|fh
+mn015|ami is um our counselor and spiritual guidance.|S|s|rt
+mn015|and um also interested in problems concerning reference of the more complex type.|S|s|rt
+me045|oh wow.|S|s|ba
+mn036|well|D|%|%
+mn015|and um he sits in as a interested participant and helper.|S|s|s
+mn015|is that a good characterization?|Q|qy|rt
+mn036|that's pretty good i think.|S|s|na
+mn015|i don't know.|S|s|no
+mn036|yeah.|S|s|aa
+mn036|thanks.|S|s|ft
+mn015|okay.|S|s|bk
+mn015|keith is not technically one of us yet.|S|s|s
+me045|not yet.|S|s|bk
+mn015|ha ha.|S|s|s
+fe004|one of us.|S|s|j
+mn015|but um it's too late for him now.|S|fh|fh
+me045|yeah right.|S|s|bk
+mn015|so|F|fh|fh
+me045|i've got the headset on after all.|S|s|s
+mn015|um|F|fh|fh
+mn015|officially i guess he will be joining us in the summer.|S|s|bu
+me045|yes.|S|s|aa
+mn015|and um hopefully it is by by means of keith that we will be able to get a a better formal and a better semantic um idea of what a construction is.|S|fh|fh
+mn015|and um how we can make it work for us.|S|s|rt
+mn015|additionally his interest um surpasses um english.|S|s|s
+mn015|because it also entails german.|S|s|s
+mn015|an extra capability of speaking and writing and understanding and reading that language.|S|s|s
+mn015|and um is there anyone who doesn't know nancy?|Q|fh|fh
+mn015|do you do you know nancy?|Q|qy|rt
+fe004|me?|Q|qy|d
+fe004|uhhuh.|B|b|b
+me045|i know nancy.|S|s|na
+mn015|okay.|S|s|bk
+me003|i made that joke already nancy sadly.|S|s|s
+fe004|what?|Q|qw|qw
+me003|the i don't know myself joke.|S|s|rt
+fe004|you did?|Q|qy|bu
+fe004|when?|Q|qw|rt
+me003|uh before you came in.|S|s|s
+fe004|oh.|S|s|bk
+fe004|about me or you?|Q|qr|qr
+me045|man!|S|s|ba
+me003|about me.|S|s|rt
+fe004|okay okay.|S|s|bk
+mn036|you could do it about you.|S|s|cs
+fe004|well i didn't know.|S|s|no
+me003|yeah.|B|b|b
+fe004|i didn't mean to be humor copying.|S|s|bd
+fe004|but okay.|S|s|bk
+fe004|sorry.|S|s|fa
+fe004|yes i know myself.|S|s|s
+fe004|it's okay.|S|s|bd
+fe004|it's a|D|%|%
+mn015|okay.|S|s|bk
+mn015|and um fey is with us as of six days ago officially.|S|s|bu
+fe046|officially.|S|s|m
+fe046|yeah.|S|s|aa
+mn015|officially.|S|s|bk
+mn015|but in reality already um much much longer.|S|s|s
+mn015|and um um next to some some more or less bureaucratic uh stuff with the the data collection she's also the wizard in the data collection.|S|s|s
+fe004|of oz.|S|s|2
+mn015|um|F|fh|fh
+fe046|it's very exciting.|S|s|ba
+mn015|we're sticking with the term wizard.|S|s|s
+fe046|yes.|S|s|bk
+fe046|yes.|D|b|b
+mn015|okay.|B|b|b
+mn015|and um|F|fh|fh
+fe004|not witch like.|S|s|s
+me003|wizardette.|S|s|cs
+me045|wizard.|S|s|bc
+me012|wizardess.|S|s|cs
+mn015|sorceress i think.|S|s|cs
+fe004|okay.|S|s|bk
+fe046|wizard.|S|s|bk
+mn015|wizard.|S|s|bk
+fe004|okay.|S|s|bk
+mn015|uh by by popular vote.|S|s|s
+mn015|um|F|fh|fh
+fe004|didn't take a vote.|S|s|nd
+fe004|okay.|S|s|bd
+mn015|okay um why don't we get started on that subject anyways?|Q|fg|fg
+mn015|um so we're about to collect data.|S|fh|fh
+mn015|and um the uh the following things have happened since we last met.|S|s|s
+mn015|when will we three meet again?|Q|qw|rt
+mn015|and um|F|fh|fh
+fe004|more than three of us.|S|s|bc
+mn015|what happened is that um a there was some confusion between you and jerry with the that leading to your talking to catherine snow.|S|s|rt
+mn015|and he was uh he he agreed completely that something confusing happened.|S|s|s
+mn015|um his idea was to get sort of the the lists of mayors of the department.|S|s|s
+mn015|the students.|S|s|s
+mn015|it it's exactly how you interpreted it.|S|s|s
+me045|the list of majors in the department?|Q|qy|bu
+mn015|sort of|D|%|%
+fe046|majors?|Q|qy|bc
+mn015|majors majors.|S|s|aa

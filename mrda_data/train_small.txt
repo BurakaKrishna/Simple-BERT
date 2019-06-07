@@ -1,0 +1,300 @@
+fe016|okay.|F|fg|fg
+fe016|so um|F|fh|fh
+fe016|i was going to try to get out of here like in half an hour.|S|s|rt
+fe016|um|F|fh|fh
+fe016|because i really appreciate people coming.|S|s|s
+fe016|and the main thing that i was going to ask people to help with today is to give input on what kinds of database format we should use in starting to link up things like word transcripts and annotations of word transcripts.|S|s|s
+fe016|so anything that transcribers or discourse coders or whatever put in the signal with time marks for like words and phone boundaries and all the stuff we get out of the forced alignments and the recognizer.|S|s|e
+fe016|so we have this um|D|fh|fh
+fe016|i think a starting point is clearly the the channelized output of dave gelbart's program.|S|s|s
+fe016|which don brought a copy of.|S|s|e
+me011|yeah.|B|b|b
+me011|yeah i'm i'm familiar with that.|S|s|bk
+me011|i mean we i sort of already have developed an x.m.l. format for this sort of stuff.|S|s|s
+fe016|um|F|fh|fh
+fe016|which|D|%|%
+me018|can i see it?|Q|qy|rt
+me011|and so the only question is it the sort of thing that you want to use or not.|S|s|s
+me011|have you looked at that?|Q|qy|rt
+me011|i mean i had a web page up.|S|s|df
+fe016|right.|S|s|aa
+fe016|so|F|fh|fh
+fe016|i actually mostly need to be able to link up or|D|s|s
+me011|so|F|fg|fg
+fe016|it's it's a question both of what the representation is and|D|s|s
+me011|you mean this?|Q|qy|d
+me011|i guess i am going to be standing up and drawing on the board.|S|s|s
+fe016|okay.|S|s|bk
+fe016|yeah.|S|s|aa
+fe016|so you should definitely.|S|s|na
+me011|um so so it definitely had that as a concept.|S|s|s
+me011|so it has a single timeline.|S|s|s
+fe016|uhhuh.|S|s|bk
+me011|and then you can have lots of different sections.|S|s|s
+me011|each of which have i.d.'s attached to it.|S|s|s
+me011|and then you can refer from other sections to those i.d.'s.|S|s|s
+me011|if you want to.|S|s|e
+me011|so that|D|s|s
+me011|um|F|fh|fh
+me011|so that you start with with a timeline tag.|S|s|df
+me011|timeline.|S|s|t1
+me011|and then you have a bunch of times.|S|s|s
+me011|i don't i don't remember exactly what my notation was.|S|s|no
+mn017|oh i remember seeing an example of this.|S|s|bk
+me011|but it|D|%|%
+fe016|right.|S|s|bk
+fe016|right.|S|s|bk
+mn017|yeah.|S|s|bk
+me011|yeah.|S|s|bk
+me011|t. equals one point three two.|S|s|t1
+me011|uh|F|fh|fh
+me011|and then i i also had optional things like accuracy.|S|s|s
+me011|and then i.d. equals t. one uh one seven.|S|s|t1
+me011|and then i also wanted to to be to be able to not specify specifically what the time was and just have a stamp.|S|s|s
+fe016|right.|S|s|bk
+me011|yeah so these are arbitrary assigned by a program.|S|s|s
+me011|not not by a user.|S|s|e
+me011|so you have a whole bunch of those.|S|s|s
+me011|and then somewhere further down you might have something like an utterance tag.|S|s|s
+me011|which has start equals t. seventeen.|S|s|e
+me011|end equals t. eighteen.|S|s|e
+me011|so what that's saying is we know it starts at this particular time.|S|s|s
+me011|we don't know when it ends.|S|s|s
+fe016|okay.|S|s|bk
+me011|right?|Q|qy|d
+me011|but it ends at this t. eighteen.|S|s|s
+me011|which may be somewhere else.|S|s|e
+me011|we say there's another utterance.|S|s|s
+me011|we don't know what the time actually is.|S|s|s
+me011|but we know that it's the same time as this end time.|S|s|s
+mn017|huh.|B|b|b
+me011|you know thirty eight.|S|s|e
+me011|whatever you want.|S|s|s
+mn017|so you're essentially defining a lattice.|S|s|bu
+me011|okay.|B|b|b
+me011|yes.|S|s|aa
+me011|exactly.|S|s|aa
+mn017|yeah.|B|b|b
+me011|and then uh and then these also have i.d.'s.|S|s|s
+me011|right?|Q|qy|d
+me011|so you could you could have some sort of other other tag later in the file that would be something like um oh i don't know uh noise type equals door slam.|S|s|cs
+me011|you know?|Q|qy|d
+me011|and then uh you could either say time equals a particular time mark or you could do other sorts of references.|S|s|cs
+me011|so or or you might have a prosody.|S|s|s
+me011|prosody.|S|s|s
+me011|right?|Q|qy|d
+me011|d. ?|Q|qy|bu
+me011|t. ?|Q|qy|bu
+fe016|it's an o. instead of an i. .|S|s|df
+fe016|but the d. is good.|S|s|aap
+me011|you like the d. ?|Q|qy|d
+fe016|yeah.|S|s|aa
+me011|that's a good d. .|S|s|ba
+me011|um|F|fg|fg
+me011|you know so you could have some sort of type here.|S|s|s
+me011|and then you could have|D|s|s
+me011|um|F|fh|fh
+me011|the utterance that it's referring to could be u. seventeen or something like that.|S|s|s
+fe016|okay.|S|s|bk
+fe016|so|F|fh|fh
+fe016|i mean that seems that seems great for all of the encoding of things with time.|S|s|ba
+fe016|and|F|fh|fh
+me011|oh well.|S|s|bk
+fe016|um|F|fh|fh
+fe016|i i guess my question is more uh what what do you do with say a forced alignment?|Q|qw|qw
+fe016|i mean you've got all these phone labels.|S|s|df
+fe016|and what do you do if you just conceptually if you get um transcriptions where the words are staying but the time boundaries are changing because you've got a new recognition output?|Q|qw|qw
+fe016|or sort of what's the um sequence of going from the waveforms that stay the same the transcripts that may or may not change and then the utterance which where the time boundaries that may or may not change?|Q|qw|qw
+mn017|oh that's|D|s|bk
+mn017|that's actually very nicely handled here.|S|s|s
+fe016|um|F|fh|fh
+mn017|because you could you could all you'd have to change is the um time stamps in the timeline without without uh changing the i.d.'s.|S|s|df
+fe016|and you'd be able to propagate all of the the information?|Q|qy|bu
+me011|right.|S|s|bk
+me011|that's the that's why you do that extra level of indirection.|S|s|s
+me011|so that you can just change the timeline.|S|s|df
+mn017|except the timeline is going to be huge.|S|s|s
+mn017|if you say|D|s|s
+me011|yes.|S|s|aa
+fe016|yeah.|S|s|aa
+fe016|yeah especially at the phone level.|S|s|na
+mn017|suppose you have a phone level alignment.|S|s|e
+fe016|the we we have phone level backtraces.|S|s|s
+mn017|you'd have you'd have|D|%|%
+me011|yeah this|D|fg|fg
+me011|i don't think i would do this for phone level.|S|s|ng
+fe016|um|F|fh|fh
+me011|i think for phone level you want to use some sort of binary representation.|S|s|s
+me011|because it'll be too dense otherwise.|S|s|df
+fe016|okay.|F|fg|fg
+fe016|so if you were doing that and you had this sort of companion uh thing that gets called up for phone level uh what would that look like?|Q|fh|fh
+fe016|how would you|D|qw|qw
+me011|i would use just an existing an existing way of doing it.|S|s|s
+mn017|huh.|B|b|b
+mn017|but but why not use it for phone level?|Q|qw|qw
+mn017|it's just a matter of it's just a matter of it being bigger.|S|s|df
+mn017|but if you have|D|s|s
+mn017|you know barring memory limitations uh i mean this is still the|D|s|s
+me011|it's parsing limitations.|S|s|nd
+me011|i don't want to have this text file that you have to read in the whole thing to do something very simple for.|S|s|s
+mn017|oh no.|S|s|ar
+mn017|you would use it only for purposes where you actually want the phone level information i'd imagine.|S|s|nd
+fe016|so you could have some file that configures how much information you want in your in your x.m.l. or something.|S|s|s
+me011|right.|S|s|bk
+me011|i mean you'd|D|%|%
+fe016|um|F|fh|fh
+fe016|because it does get very with|D|s|df
+me011|i i am imagining you'd have multiple versions of this depending on the information that you want.|S|s|s
+mn017|you|D|%|%
+fe016|right.|S|s|aa
+me011|um|F|fh|fh
+me011|i'm just|D|s|s
+me011|what i'm wondering is whether|D|s|s
+me011|i think for word level this would be okay.|S|s|s
+fe016|yeah.|S|s|aa
+fe016|yeah.|S|s|aa
+me011|for word level it's all right.|S|s|s
+fe016|definitely.|S|s|na
+mn017|uhhuh.|B|b|b
+me011|for lower than word level you're talking about so much data that i just i don't know.|S|s|no
+me011|i don't know if that|D|s|s
+fe016|i mean we actually have|D|s|s
+fe016|so one thing that don is doing is we're we're running for every frame you get a pitch value.|S|s|s
+me018|lattices are big too.|S|s|s
+fe016|and not only one pitch value but different kinds of pitch values.|S|s|e
+fe016|depending on|D|s|e
+me011|yeah i mean for something like that i would use p. file.|S|fg|fg
+me011|or or any frame level stuff i would use p. file.|S|s|s
+fe016|meaning?|Q|qw|d
+me011|uh that's a well or something like it.|S|s|s
+me011|it's uh icsi has a format for frame level representation of features.|S|s|s
+fe016|okay.|S|s|bk
+me011|um|F|fh|fh
+fe016|that you could call that you would tie into this representation with like an i.d.|S|s|bu
+me011|right.|S|s|aa
+me011|right.|S|s|aa
+me011|or or there's a there's a particular way in x.m.l. to refer to external resources.|S|s|s
+fe016|and|F|fh|fh
+fe016|okay.|S|s|bk
+me011|so you would say refer to this external file.|S|s|s
+me011|um|F|fh|fh
+me011|so that external file wouldn't be in|D|s|s
+fe016|so that might that might work.|S|s|na
+me018|but what what's the advantage of doing that versus just putting it into this format?|Q|qw|rt
+me011|more compact.|S|s|s
+me011|which i think is is better.|S|s|ba
+me018|uhhuh.|B|b|b
+me011|i mean if you did it at this|D|s|s
+fe016|i mean these are long meetings.|S|s|s
+fe016|and with for every frame|D|s|s
+me011|you don't want to do it with that|D|s|s
+fe016|um|F|fh|fh
+me011|anything at frame level you had better encode binary.|S|s|s
+me011|or it's going to be really painful.|S|s|df
+mn017|or you just|D|s|cs
+mn017|i mean i like text formats.|S|s|cs
+mn017|um|F|fh|fh
+mn017|you can always uh g. zip them.|S|s|cs
+mn017|and um you know decompress them on the fly if if space is really a concern.|S|fh|fh
+me018|yeah i was|D|fg|fg
+me018|i was thinking the advantage is that we can share this with other people.|S|s|s
+me011|well but if you're talking about one per frame you're talking about gigabyte-size files.|S|s|nd
+me011|you're going to actually run out of space in your filesystem for one file.|S|s|df
+fe016|these are big files.|S|s|na
+fe016|these are really|D|s|s
+fe016|i mean|F|fh|fh
+me011|right?|Q|qy|d
+me011|because you have a two-gigabyte limit on most o.s.'s.|S|s|df
+mn017|right.|S|s|bk
+mn017|okay.|S|s|bk
+mn017|i would say|D|s|s
+mn017|okay so frame level is probably not a good idea.|S|s|bk
+fe016|and it's|D|%|%
+mn017|but for phone level stuff it's perfectly|D|s|s
+mn017|like phones or syllables or anything like that.|S|s|s
+fe016|phones are every five frames though.|S|s|ng
+fe016|so|F|fh|fh
+fe016|or something like that.|S|s|e
+mn017|but but but most of the frames are actually not speech.|S|s|df
+mn017|so|F|fh|fh
+mn017|you know people don't|D|s|s
+fe016|yeah.|S|s|bk
+mn017|look at it words times the average the average number of phones in an english word is i don't know five maybe?|Q|qy|bu
+fe016|but we actually|D|s|ng
+mn017|so look at it number of words times five.|S|s|df
+fe016|oh so you mean pause phones take up a lot of the|D|s|bu
+mn017|that's not that not|D|%|%
+fe016|long pause phones.|S|s|bsc
+me011|yep.|S|s|aa
+mn017|exactly.|S|s|aa
+fe016|yeah.|S|s|bk
+fe016|okay.|S|s|bk
+mn017|yeah.|S|s|aa
+fe016|that's true.|S|s|aa
+fe016|but you do have to keep them in there.|S|s|s
+fe016|yeah.|F|fh|fh
+me011|so i think it it's debatable whether you want to do phone level in the same thing.|S|s|s
+fe016|okay.|S|s|bk
+me011|but i think anything at frame level even p. file is too verbose.|S|s|ba
+fe016|okay.|S|s|bk
+fe016|so|F|fg|fg
+me011|i would use something tighter than p. files.|S|s|cs
+fe016|do you are you familiar with it?|Q|qy|rt
+me011|so|F|fh|fh
+fe016|i haven't seen this particular format.|S|s|df
+mn017|i mean i've i've used them.|S|s|na
+fe016|but|F|fh|fh
+mn017|i don't know what their structure is.|S|s|no
+fe016|okay.|S|s|bk
+mn017|i've forgot what the|D|s|no
+me018|but wait a minute.|S|s|co
+me018|p. file for each frame is storing a vector of cepstral or p.l.p. values.|S|s|bu
+me018|right?|Q|qy|d
+me011|it's whatever you want actually.|S|s|ng
+me018|right.|S|s|bk
+me011|so that what's nice about the p. file it|D|s|s
+me011|built into it is the concept of frames utterances sentences that sort of thing that structure.|S|s|s
+me011|and then also attached to it is an arbitrary vector of values.|S|s|s
+fe016|oh.|S|s|bk
+me011|and it can take different types.|S|s|s
+me011|so it they don't all have to be floats.|S|s|s
+me011|you know you can have integers and you can have doubles and all that sort of stuff.|S|s|e
+fe016|so that that sounds that sounds about what i|D|s|s
+me011|um|F|fh|fh
+me011|right?|Q|qy|d
+me011|and it has a header it has a header format that describes it to some extent.|S|s|s
+me011|so|F|fh|fh
+me011|the only problem with it is it's actually storing the utterance numbers and the frame numbers in the file.|S|s|s
+me011|even though they're always sequential.|S|s|e
+me011|and so it does waste a lot of space.|S|s|s
+mn017|huh.|B|b|b
+me011|but it's still a lot tighter than than ascii.|S|s|s
+me011|and we have a lot of tools already to deal with it.|S|s|s
+fe016|you do?|Q|qy|d
+fe016|okay.|S|s|bk
+fe016|is there some documentation on this somewhere?|Q|qy|rt
+me011|yeah.|S|s|aa
+me011|there's a ton of it.|S|s|na
+fe016|okay.|S|s|bk
+fe016|great.|S|s|ba
+me011|man pages and uh source code and me.|S|s|df
+fe016|so|F|fh|fh
+fe016|i mean that sounds good.|S|s|ba
+fe016|i i was just looking for something|D|s|s
+fe016|i'm not a database person.|S|s|df
+fe016|but something sort of standard enough that you know if we start using this we can give it out.|S|s|s
+fe016|other people can work on it.|S|s|s
+me011|yeah it's not standard.|S|s|bk
+fe016|or is it|D|qy|qy
+me011|i mean it's something that we developed at icsi.|S|s|df
+me011|but uh|F|fh|fh
+fe016|but it's been used here.|S|s|s
+me011|but it's been used here.|S|s|m
+fe016|and people've|D|s|s
+me011|and and you know we have a well configured system that you can distribute for free.|S|s|s
+me011|and|D|%|%
+me018|i mean it must be the equivalent of whatever you guys used to store your computed features in right?|S|s|bu
+fe016|okay.|B|b|b
+mn017|yeah.|S|s|aa
+mn017|we have|D|s|s
+mn017|actually we we use a generalization of the the sphere format.|S|s|rt

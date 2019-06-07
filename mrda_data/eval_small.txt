@@ -1,0 +1,200 @@
+me003|okay.|B|b|b
+me003|so let's see.|S|s|t1
+me003|which one of these buttons will do this for me?|Q|qw|t1
+me003|aha!|S|s|fe
+me003|okay.|B|b|b
+me012|should you go back to the first one?|Q|qy|rt
+me003|do i want to go back to the first one?|Q|qy|m
+me012|well|D|%|%
+me003|okay.|S|s|aa
+fe004|i'm sorry i|D|s|fa
+me012|well i mean just to|D|s|bd
+me003|okay.|S|s|bk
+me003|introduce.|S|s|co
+fe004|okay.|S|s|bk
+me012|yeah um well the search for the middle layer.|S|s|bk
+me012|it's basically uh talks about uh it just refers to the fact that uh one of main things we had to do was to decide what the intermediate sort of nodes were.|S|s|s
+fe004|i can read!|S|s|fe
+fe004|i'm kidding.|S|s|bd
+fe004|uhhuh.|B|b|b
+me012|you know because|D|s|s
+mn015|but if you really want to find out what it's about you have to click on the little light bulb.|S|s|s
+me003|although i've i've never i don't know what the light bulb is for.|S|s|no
+me003|i didn't install that into my powerpoint presentation.|S|s|s
+mn015|it opens the assistant that tells you that the font type is too small.|S|s|s
+me003|uh.|S|s|bk
+mn015|do you want to try?|Q|qy|rt
+fe004|ach|D|%|%
+me003|i'd prefer not to.|S|s|nd
+mn015|okay.|S|s|bk
+mn015|continue.|S|s|co
+fe004|it's a needless good idea.|S|s|s
+fe004|is that the idea?|Q|qy|g
+mn015|why are you doing this in this mode and not in the presentation mode?|Q|qw|qw
+fe004|okay.|S|s|bk
+me003|because i'm going to switch to the javabayes program.|S|s|rt
+mn015|oh okay.|S|s|bk
+mn015|of course.|S|s|bk
+mn015|uhhuh.|B|b|b
+me003|and then if i do that it'll mess everything up.|S|s|s
+fe004|i was wondering.|S|s|s
+me003|is that okay?|Q|qy|rt
+fe004|yeah it's okay.|S|s|aa
+mn015|sure.|B|b|b
+me012|can you maximize the window?|Q|qy|rt
+fe004|proceed.|S|s|co
+me003|you want me to|D|qy|d
+me003|wait what do you want me to do?|Q|qw|br
+me012|can you maximize the window so all that stuff on the side isn't doesn't appear?|Q|qy|qy
+mn015|no it's okay.|S|s|ar
+mn015|it's it'll work.|S|s|s
+me003|well i can do that.|S|s|aap
+me003|but then i have to end the presentation in the middle so i can go back to open up javabayes.|S|s|ng
+me012|okay fine.|S|s|bk
+me003|here let's see if i can|D|s|s
+me012|all right.|S|s|bk
+fe004|very nice.|S|s|ba
+me003|is that better?|Q|qy|rt
+me012|yeah.|S|s|aa
+me003|okay.|S|s|bk
+me003|uh i'll also get rid of this click to add notes.|S|s|cc
+me003|okay.|B|b|b
+fe004|perfect.|S|s|ba
+me003|so then the features we decided or we decided we were talked about.|S|s|s
+me003|right?|Q|qy|d
+me003|uh the the prosody the discourse verb choice.|S|s|s
+me003|you know we had a list of things like to go and to visit and what not.|S|s|s
+me003|the landmark-iness of uh|D|s|s
+me003|i knew you'd like that.|S|s|s
+fe004|nice coinage.|S|s|ba
+me003|thank you.|S|s|ft
+me003|uh of a of a building.|S|s|s
+me003|whether the|D|s|s
+me003|and this we actually have a separate feature.|S|s|s
+me003|but i decided to put it on the same line for space.|S|s|s
+me003|nice walls which we can look up.|S|s|s
+me003|because i mean if you're going to get real close to a building in the tango mode|D|s|s
+me003|right?|Q|qy|d
+me003|there's got to be a reason for it.|S|s|s
+me003|and it's either because you're in route to something else or you want to look at the walls.|S|s|s
+me003|the context which in this case we've limited to business person tourist or unknown.|S|s|s
+me003|the time of day.|S|s|s
+me003|and open to suggestions isn't actually a feature.|S|s|s
+me003|it's we are open to suggestions.|S|s|s
+fe004|right.|S|s|bk
+fe004|can i just ask the nice walls part of it is that uh in this particular domain|D|qy|qy
+fe004|you said be it could be on two different lines.|S|s|df
+fe004|but are you saying that in this particular domain it happens the that landmark-iness is correlated with|D|qy|qy
+me012|no.|S|s|ar
+me003|oh|D|%|%
+me012|we have a separate|D|s|nd
+me003|they're separate things.|S|s|s
+fe004|their being nice|D|s|s
+me012|feature.|S|s|bsc
+fe004|okay.|S|s|bk
+me003|yeah.|B|b|b
+me003|i either could put nice walls on its own line or open to suggestions off the slide.|S|s|s
+fe004|and and|D|%|%
+me012|like you could have a|D|s|s
+fe004|by nice you mean|D|qy|d
+me012|you like you could have a post office with uh you know nice murals or something.|S|s|s
+me003|right.|S|s|aa
+fe004|okay.|S|s|bk
+me003|or one time i was at this|D|s|s
+fe004|so nice walls is a stand in for like architecturally it uh significant.|S|s|bu
+me012|architecturally appealing from the outside.|S|s|na
+fe004|or something like that.|S|s|s
+me003|but see the thing is if it's|D|s|nd
+fe004|okay.|S|s|bk
+me003|yeah but if it's architecturally significant you might be able to see it from|D|fg|fg
+me003|like you might be able to vista it.|S|s|s
+me003|right?|Q|qy|d
+mn015|uhhuh.|B|b|b
+me003|and be able to|D|s|s
+fe004|uhhuh.|B|b|b
+mn015|appreciate it.|S|s|2
+me003|yeah.|S|s|aa
+me003|versus like|D|s|s
+me003|i was at this place in europe where they had little carvings of like dead people on the walls or something.|S|s|rt
+fe004|uhhuh.|B|b|b
+me003|i don't remember|D|s|no
+fe004|uhhuh.|B|b|b
+me003|it was a long time ago.|S|s|s
+fe004|there's a lot of those.|S|s|s
+me003|but if you looked at it real close you could see the the intricacy of the of the walls.|S|s|s
+fe004|okay.|S|s|bk
+fe004|so that count as counts as a nice wall.|S|s|bu
+me003|right.|S|s|aa
+fe004|the|D|%|%
+fe004|okay.|S|s|bk
+mn015|uhhuh.|B|b|b
+fe004|right.|B|b|b
+fe004|something you want to inspect at close range because it's interesting.|S|s|bu
+mn015|the|D|%|%
+me003|exactly.|S|s|aa
+fe004|okay.|S|s|bk
+mn015|huh.|B|b|b
+me003|robert?|Q|qy|d
+mn015|well there there is a term that's often used.|S|s|s
+mn015|that's saliency or the salience of an object.|S|s|rt
+mn015|and i was just wondering whether that's the same as what you describe as landmark-iness.|S|s|s
+mn015|but it's really not.|S|s|s
+mn015|i mean an object can be very salient.|S|s|s
+fe004|huh.|B|b|b
+mn015|but not a landmark at all.|S|s|2
+fe004|not a landmark at all.|S|s|m
+fe004|there's landmark for um touristic reasons and landmark for|D|s|s
+fe004|i don't know.|S|s|no
+fe004|navigational reasons or something.|S|s|s
+me003|right.|B|b|b
+mn015|yep.|B|b|b
+me012|yeah.|B|b|b
+me012|we meant uh touristic reasons.|S|s|s
+me003|yeah.|B|b|b
+fe004|okay.|S|s|bk
+mn015|huh.|B|b|b
+me003|right.|B|b|b
+fe004|okay.|B|b|b
+fe004|but you can imagine maybe wanting the both kinds of things there for different um goals.|S|s|bu
+mn015|huh.|B|b|b
+me012|yeah.|B|b|b
+fe004|right?|Q|qy|d
+me003|right.|S|s|aa
+me003|but|D|s|arp
+me003|yeah.|B|b|b
+me003|touristy landmarks also happen to be|D|s|s
+me003|wouldn't couldn't they also be|D|qy|qy
+me003|they're not exclusive groups.|S|s|bu
+me003|are they?|Q|qy|g
+me003|like non tourist y landmarks and|D|s|s
+mn015|or it can be|D|s|s
+fe004|they're not mutually exclusive?|Q|qy|m
+me003|direct navigational|D|s|s
+me003|yeah.|S|s|aa
+fe004|right.|S|s|aa
+me003|okay.|S|s|bk
+fe004|right.|S|s|aa
+fe004|definitely.|S|s|aa
+me003|okay so our initial idea was not very satisfying because uh our initial idea was basically all the features pointing to the output node.|S|fg|fg
+me003|uh|F|fh|fh
+fe004|so a big flat structure.|S|s|bu
+fe004|right?|Q|qy|d
+me003|right.|S|s|aa
+me012|yep.|S|s|aa
+me003|and uh so we|D|s|s
+me003|reasons being you know it'd be a pain to set up all the probabilities for that.|S|s|s
+me003|if we moved onto the next step and did learning of some sort uh according bhaskara we'd be handicapped.|S|s|s
+me003|i don't know belief nets very well.|S|s|no
+me012|well usually i mean you know n|D|s|s
+me012|if you have n features then it's two to the n or exponential in n.|S|s|s
+me003|and they wouldn't look pretty.|S|s|2
+me003|so|D|s|s
+me012|yeah.|S|s|aa
+me012|they'd all be like pointing to the one node.|S|s|s
+mn015|uhhuh.|B|b|b
+me003|uh|F|fh|fh
+me003|so then our next idea was to add a middle layer.|S|s|s
+me003|right?|Q|qy|d
+me003|so the thinking behind that was we have the features that we've drawn from the communication of some like the someone|D|s|s
+me003|the person at the screen is trying to communicate some abstract idea.|S|s|s
+me003|like i'm the the abstract idea being i am a tourist.|S|s|s
