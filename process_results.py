@@ -7,7 +7,7 @@ from sklearn.metrics import precision_recall_fscore_support, accuracy_score
 #import confusion_matrix as cm
 
 # Task name
-task_name = 'mrda'  # TODO Needs arg?
+task_name = 'swda'  # TODO Needs arg?
 processors = {
     "swda": data_processor.SwdaProcessor(),
     "mrda": data_processor.MrdaProcessor(),
@@ -17,7 +17,7 @@ processors = {
 data_dir = task_name + '_data/'
 output_dir = task_name + '_output'
 
-test_results_file = os.path.join(output_dir, "test_predictions.csv")
+test_results_file = os.path.join(output_dir, 'test', "test_predictions.csv")
 test_results = []
 test_metrics = dict()
 

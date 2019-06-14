@@ -75,7 +75,7 @@ class SwdaProcessor(DataProcessor):
 
     def get_train_examples(self, data_dir):
         """Training Set."""
-        with open(data_dir + 'train_small.txt', "r") as file:
+        with open(data_dir + 'train_set.txt', "r") as file:
             # Read a line and strip newline char
             lines = [line.rstrip('\r\n') for line in file.readlines()]
         return self._create_examples(lines, "train")
@@ -83,7 +83,7 @@ class SwdaProcessor(DataProcessor):
     def get_eval_examples(self, data_dir):
         """Evaluation Set.
         Set here WILL have labels and be used to evaluate training"""
-        with open(data_dir + 'eval_small.txt', "r") as file:
+        with open(data_dir + 'eval_set.txt', "r") as file:
             # Read a line and strip newline char
             lines = [line.rstrip('\r\n') for line in file.readlines()]
         return self._create_examples(lines, "eval")
@@ -124,7 +124,7 @@ class MrdaProcessor(DataProcessor):
 
     def get_train_examples(self, data_dir):
         """Training Set."""
-        with open(data_dir + 'train_small.txt', "r") as file:
+        with open(data_dir + 'train_set.txt', "r") as file:
             # Read a line and strip newline char
             lines = [line.rstrip('\r\n') for line in file.readlines()]
         return self._create_examples(lines, "train")
@@ -132,7 +132,7 @@ class MrdaProcessor(DataProcessor):
     def get_eval_examples(self, data_dir):
         """Evaluation Set.
         Set here WILL have labels and be used to evaluate training"""
-        with open(data_dir + 'eval_small.txt', "r") as file:
+        with open(data_dir + 'eval_set.txt', "r") as file:
             # Read a line and strip newline char
             lines = [line.rstrip('\r\n') for line in file.readlines()]
         return self._create_examples(lines, "eval")
@@ -140,7 +140,7 @@ class MrdaProcessor(DataProcessor):
     def get_test_examples(self, data_dir):
         """Test Set.
         Set here will NOT have labels and be used to make predictions"""
-        with open(data_dir + 'test_small.txt', "r") as file:
+        with open(data_dir + 'test_set.txt', "r") as file:
             # Read a line and strip newline char
             lines = [line.rstrip('\r\n') for line in file.readlines()]
         return self._create_examples(lines, "test")
