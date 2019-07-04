@@ -1,10 +1,9 @@
-import os
 import bert
 import data_processor
 import tokenization
 import numpy as np
 import bert_utilities as utils
-import tensorflow as tf
+from best_checkpoint_copier import *
 from sklearn.preprocessing import label_binarize
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score
 import confusion_matrix as cm
@@ -21,23 +20,37 @@ config = tf.ConfigProto(device_count={"CPU": 24},
 tf.Session(config=config)
 
 # Task name
-task_name = 'swda'  # TODO Needs arg?
+task_name = 'mrda'  # TODO Needs args?
+experiment_name = 'full_tags_15_epoch'
 processors = {
+    "cola": data_processor.ColaProcessor,
+    "mnli": data_processor.MnliProcessor,
+    "mrpc": data_processor.MrpcProcessor,
+    "xnli": data_processor.XnliProcessor,
     "swda": data_processor.SwdaProcessor(),
     "mrda": data_processor.MrdaProcessor(),
-}  # TODO add the others included with BERT
+}
 
 # Data source and output paths
 data_dir = task_name + '_data/'
 output_dir = task_name + '_output'
 
+# Create appropriate directories if they don't exist
+if experiment_name is not '' and experiment_name is not None:
+    output_dir = os.path.join(output_dir, experiment_name)
+
+datasets_dir = os.path.join(output_dir, 'datasets')
+if not os.path.exists(datasets_dir):
+    os.makedirs(datasets_dir)
+
 # Training parameters
-max_seq_length = 128  # TODO Needs args?
-batch_size = 32
-learning_rate = 2e-5
-num_epochs = 6.0  # Default 3
-save_checkpoint_steps = 1000
-evaluate_secs = 3600
+max_seq_length = 128  # Default 128 TODO Needs args?
+batch_size = 32  # Default 32
+learning_rate = 2e-5  # Default 2e-5
+num_epochs = 15.0  # Default 3
+save_checkpoint_steps = 1000  # 1000
+evaluate_secs = 3600  # 3600
+checkpoints_to_keep = 1
 training = True
 testing = True
 
@@ -79,7 +92,7 @@ labels = dataset_processor.get_labels(data_dir)
 
 # Training data
 training_examples = dataset_processor.get_train_examples(data_dir)
-train_data_file = os.path.join(output_dir, 'datasets', "train.tf_record")
+train_data_file = os.path.join(datasets_dir, "train.tf_record")
 data_processor.convert_examples_to_features(training_examples, labels, max_seq_length, tokenizer, train_data_file)
 train_input_fn = utils.input_fn_builder(
     train_data_file,
@@ -89,7 +102,7 @@ train_input_fn = utils.input_fn_builder(
 
 # Evaluation data
 evaluation_examples = dataset_processor.get_eval_examples(data_dir)
-eval_data_file = os.path.join(output_dir, 'datasets', "eval.tf_record")
+eval_data_file = os.path.join(datasets_dir, "eval.tf_record")
 data_processor.convert_examples_to_features(evaluation_examples, labels, max_seq_length, tokenizer, eval_data_file)
 eval_input_fn = utils.input_fn_builder(
     input_file=eval_data_file,
@@ -99,7 +112,7 @@ eval_input_fn = utils.input_fn_builder(
 
 # Test data
 test_examples = dataset_processor.get_test_examples(data_dir)
-test_data_file = os.path.join(output_dir, 'datasets', "test.tf_record")
+test_data_file = os.path.join(datasets_dir, "test.tf_record")
 data_processor.convert_examples_to_features(test_examples, labels, max_seq_length, tokenizer, test_data_file)
 test_input_fn = utils.input_fn_builder(
     input_file=test_data_file,
@@ -111,6 +124,15 @@ test_input_fn = utils.input_fn_builder(
 num_training_steps = int(len(training_examples) / batch_size * num_epochs)
 num_evaluation_steps = int(len(evaluation_examples) / batch_size)
 num_test_steps = int(len(test_examples) / batch_size)
+
+# Copies the best checkpoint to far to its own directory
+best_checkpoint_copier = BestCheckpointCopier(
+   name='best_checkpoint',
+   checkpoints_to_keep=checkpoints_to_keep,
+   score_metric='loss',
+   compare_fn=lambda x, y: x.score < y.score,
+   sort_key_fn=lambda x: x.score,
+   sort_reverse=False)
 
 print("------------------------------------")
 print("Prepared data...")
@@ -143,7 +165,7 @@ if training:
     print("------------------------------------")
     print("Train Model...")
     train_spec = tf.estimator.TrainSpec(input_fn=train_input_fn, max_steps=num_training_steps)
-    eval_spec = tf.estimator.EvalSpec(input_fn=eval_input_fn, steps=num_evaluation_steps, throttle_secs=evaluate_secs)
+    eval_spec = tf.estimator.EvalSpec(input_fn=eval_input_fn, exporters=best_checkpoint_copier, steps=num_evaluation_steps, throttle_secs=evaluate_secs)
     eval_metrics = tf.estimator.train_and_evaluate(estimator, train_spec, eval_spec)
 
     # Write the evaluation results to a file
