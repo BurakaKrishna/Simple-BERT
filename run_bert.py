@@ -21,7 +21,7 @@ tf.Session(config=config)
 
 # Task name
 task_name = 'mrda'  # TODO Needs args?
-experiment_name = 'full_tags_15_epoch'
+experiment_name = 'basic_tags_10_epoch'
 processors = {
     "cola": data_processor.ColaProcessor,
     "mnli": data_processor.MnliProcessor,
@@ -31,6 +31,7 @@ processors = {
     "mrda": data_processor.MrdaProcessor(),
 }
 
+# TODO add print statement for task/experiment name
 # Data source and output paths
 data_dir = task_name + '_data/'
 output_dir = task_name + '_output'
@@ -47,7 +48,7 @@ if not os.path.exists(datasets_dir):
 max_seq_length = 128  # Default 128 TODO Needs args?
 batch_size = 32  # Default 32
 learning_rate = 2e-5  # Default 2e-5
-num_epochs = 15.0  # Default 3
+num_epochs = 10.0  # Default 3
 save_checkpoint_steps = 1000  # 1000
 evaluate_secs = 3600  # 3600
 checkpoints_to_keep = 1
@@ -157,7 +158,7 @@ model_fn = utils.model_fn_builder(
     use_tpu=False,
     use_one_hot_embeddings=False)
 
-run_config = tf.estimator.RunConfig(model_dir=output_dir, save_checkpoints_steps=save_checkpoint_steps, save_summary_steps=save_checkpoint_steps)
+run_config = tf.estimator.RunConfig(model_dir=output_dir, keep_checkpoint_max=2, save_checkpoints_steps=save_checkpoint_steps, save_summary_steps=save_checkpoint_steps)
 estimator = tf.estimator.Estimator(model_fn, model_dir=output_dir, config=run_config, params={'batch_size': batch_size})
 
 if training:
@@ -187,11 +188,8 @@ if testing:
     test_predictions = [prediction for prediction in test_results]
     test_metrics = dict()
 
-    # Get the actual labels from the data and convert to one hot
-    true_labels = [test_examples[i].label for i in range(len(test_examples))]
-    true_labels = label_binarize(true_labels, labels)
-
     # Get the index of the prediction/actual labels
+    true_labels = [test_examples[i].label for i in range(len(test_examples))]
     true_labels = [np.argmax(label) for label in true_labels]
     predicted_labels = [np.argmax(prediction) for prediction in test_predictions]
 

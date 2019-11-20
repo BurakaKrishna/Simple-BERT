@@ -290,7 +290,7 @@ class SwdaProcessor(DataProcessor):
 
 
 class MrdaProcessor(DataProcessor):
-    """Processor for the Switchboard data set."""
+    """Processor for the MRDA data set."""
 
     def get_train_examples(self, data_dir):
         """Training Set."""
@@ -320,7 +320,7 @@ class MrdaProcessor(DataProcessor):
         with open(data_dir + '/metadata/metadata.pkl', 'rb') as handle:
             metadata = pickle.load(handle)
         # basic_label_freq, general_label_freq or full_label_freq
-        return list(metadata['full_label_freq'].keys())
+        return list(metadata['basic_label_freq'].keys())
 
     def _create_examples(self, lines, set_type):
         """Creates examples for the training and dev sets."""
@@ -329,12 +329,12 @@ class MrdaProcessor(DataProcessor):
         labels = []
         for line in lines:
             sentences.append(line.split("|")[1])
-            labels.append(line.split("|")[4])  # Index 2 = basic, 3 = general and 4 = full
+            labels.append(line.split("|")[2])  # Index 2 = basic, 3 = general and 4 = full
         examples = []
         for (i, line) in enumerate(lines):
             guid = "%s-%s" % (set_type, i)
             text_a = tokenization.convert_to_unicode(line.split("|")[1])
-            label = tokenization.convert_to_unicode(line.split("|")[4])
+            label = tokenization.convert_to_unicode(line.split("|")[2])
             examples.append(InputExample(guid=guid, text_a=text_a, text_b=None, label=label))
         return examples
 

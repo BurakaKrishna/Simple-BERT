@@ -2,6 +2,7 @@ import os
 import csv
 import data_processor
 import numpy as np
+import pickle
 from sklearn.preprocessing import label_binarize
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score
 #import confusion_matrix as cm
@@ -33,7 +34,7 @@ processor = processors[task_name.lower()]
 test_examples = processor.get_test_examples(data_dir)
 labels = processor.get_labels(data_dir)
 
-# Convert to one-hot
+# Get the actual labels from the data and convert to one hot
 true_labels = [test_examples[i].label for i in range(len(test_examples))]
 true_labels = label_binarize(true_labels, labels)
 

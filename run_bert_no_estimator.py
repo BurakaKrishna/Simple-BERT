@@ -293,12 +293,13 @@ with tf.Session() as sess:
                     print("Step: {}/{} - "
                           "Training loss: {:.3f}, accuracy: {:.3f}% - "
                           "Evaluation loss: {:.3f}, accuracy: {:.3f}%".format(global_step, num_global_steps,
-                                                                         (sum(train_loss) / len(train_loss)),
-                                                                         ((sum(train_accuracy) * 100) / len(
-                                                                             train_accuracy)),
-                                                                         (sum(eval_step_loss) / len(eval_step_loss)),
-                                                                         ((sum(eval_step_accuracy) * 100) / len(
-                                                                             eval_step_accuracy))))
+                                                                              (sum(train_loss) / len(train_loss)),
+                                                                              ((sum(train_accuracy) * 100) / len(
+                                                                                  train_accuracy)),
+                                                                              (sum(eval_step_loss) / len(
+                                                                                  eval_step_loss)),
+                                                                              ((sum(eval_step_accuracy) * 100) / len(
+                                                                                  eval_step_accuracy))))
 
                     # Save the model
                     saver.save(sess, model_dir + task_name, global_step=global_step, write_meta_graph=False)
@@ -307,10 +308,12 @@ with tf.Session() as sess:
             print("Epoch: {}/{} - "
                   "Training loss: {:.3f}, accuracy: {:.3f}% - "
                   "Evaluation loss: {:.3f}, accuracy: {:.3f}%".format(epoch, num_epochs,
-                                                                 (sum(train_loss) / len(train_loss)),
-                                                                 ((sum(train_accuracy) * 100) / len(train_accuracy)),
-                                                                 (sum(eval_loss) / len(eval_loss)),
-                                                                 ((sum(eval_accuracy) * 100) / len(eval_accuracy))))
+                                                                      (sum(train_loss) / len(train_loss)),
+                                                                      ((sum(train_accuracy) * 100) / len(
+                                                                          train_accuracy)),
+                                                                      (sum(eval_loss) / len(eval_loss)),
+                                                                      ((sum(eval_accuracy) * 100) / len(
+                                                                          eval_accuracy))))
 
             # If this is the last global step then save the model
             if global_step == num_global_steps:
@@ -370,7 +373,8 @@ with tf.Session() as sess:
         test_metrics = dict()
         # Calculate precision, recall and F1
         with tf.variable_scope("F1_macro"):
-            precision_mac, recall_mac, f1_mac, _ = precision_recall_fscore_support(test_labels, test_predictions, average='macro')
+            precision_mac, recall_mac, f1_mac, _ = precision_recall_fscore_support(test_labels, test_predictions,
+                                                                                   average='macro')
             test_metrics['Precision_macro'] = precision_mac
             test_metrics['Recall_macro'] = recall_mac
             test_metrics['F1_macro'] = precision_mac
@@ -379,7 +383,8 @@ with tf.Session() as sess:
             f1_mac_summary = tf.summary.scalar('F1_macro', f1_mac)
 
         with tf.variable_scope("F1_micro"):
-            precision_mic, recall_mic, f1_mic, _ = precision_recall_fscore_support(test_labels, test_predictions, average='micro')
+            precision_mic, recall_mic, f1_mic, _ = precision_recall_fscore_support(test_labels, test_predictions,
+                                                                                   average='micro')
             test_metrics['Precision_micro'] = precision_mic
             test_metrics['Recall_micro'] = recall_mic
             test_metrics['F1_micro'] = f1_mic
@@ -388,7 +393,9 @@ with tf.Session() as sess:
             f1_mic_summary = tf.summary.scalar('F1_micro', f1_mic)
 
         with tf.variable_scope("F1_weighted"):
-            precision_weight, recall_weight, f1_weight, _ = precision_recall_fscore_support(test_labels, test_predictions, average='weighted')
+            precision_weight, recall_weight, f1_weight, _ = precision_recall_fscore_support(test_labels,
+                                                                                            test_predictions,
+                                                                                            average='weighted')
             test_metrics['Precision_weighted'] = precision_weight
             test_metrics['Recall_weighted'] = recall_weight
             test_metrics['F1_weighted'] = f1_weight
@@ -413,7 +420,7 @@ with tf.Session() as sess:
 
         # Display test statistics
         print("Testing loss: {:.3f}, accuracy: {:.3f}%".format((sum(test_loss) / len(test_loss)),
-                                                          (sum(test_accuracy) * 100) / len(test_accuracy)))
+                                                               (sum(test_accuracy) * 100) / len(test_accuracy)))
 
         for key in sorted(test_metrics.keys()):
             print("{}: {:.3f}".format(key, test_metrics[key]))

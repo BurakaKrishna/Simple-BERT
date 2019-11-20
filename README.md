@@ -19,7 +19,7 @@ familiar with Tensorflow Estimators.
 Currently there is only two datsets included.
 The [Switchboard Dialogue Act Corpus (SWDA)](https://github.com/NathanDuran/Switchboard-Corpus)
 and the [Meeting Recorder Dialogue Act Corpus (MRDA)](https://github.com/NathanDuran/MRDA-Corpus).
-**Note:** If you want to use the MRDA corpus you need to specify which label types you want to use within the 
+If you want to use the MRDA corpus you need to specify which label types you want to use within the 
 MrdaProcessor() function. For more information on the label types see the above MRDA link.
 
 However, to run this code on any of the other datasets included with the original BERT model you can
